@@ -1,62 +1,114 @@
-// these are authentication routes
-const express = require('express');
-const bcrpt = require('bcrypt');
-const {v4: uuidv4} = require('uuid');
-const { PrismaClient } = require('@prisma/client');
-const prisma = new PrismaClient();
+// // these are authentication routes
 
-module.exports = function (passport) {
-    const router = express.Router()
-    
-    router.post("/register", async (req, res)=>{
-        req.body ({ email, password})
-        try{
-            // Generate userId without dashes (-) with a length of 12 characters
-            const userId = uuidv4().replace(/-/g, "").slice(0, 24);
-            // Hash the password
-            const hashedPassword = await bcrypt.hash(password, 10);
-            // Create user in the database with the generated userId
-            const user = await prisma.user.create({
-                data: {
-                id: userId,
-                email,
-                password: hashedPassword,
-                },
-            });
-            // This uses one of passport's injected methods to login the user
-            // after successful creation
-            req.login({ id: user.id, email: user.email }, function (err) {
-                // Error handling....could be better here.
-                if (err) {
-                console.log(err);
-                } else {
-                // Successful login sends the user to the dashboard
-                res.redirect("/dashboard");
-                }
-            });
-        }
+import express from "express";
+import jwt, { verify } from "jsonwebtoken";
+import argon2 from "argon2";
+import prisma from "../db/index.js";
 
-        catch{ error => {
-            console.error(error)
-            res.status(500).json({ error: "Internal Server Error" });
-        }}
-    })
+const router = express.Router();
 
-    router.post("/login", passport.authenticate(local), (successRedirect, failureRedirect) => {
-        successRedirect: "/dashboard";
-        failureRedirect: "/login";
-    })
-
-    // for the user to logout.
-    // req.logout will destroy the session that passport created
-    router.post("/logout", function (req, res, next) {
-        req.logout(function (err) {
-        if (err) {
-            return next(err);
-        }
-        res.redirect("/login");
-        });
+router.post("/signup", async (request, response) => {
+  try {
+    //Finds a user by their username
+    const user = await prisma.user.findFirst({
+      where: {
+        username: request.body.username,
+      },
     });
 
-    return router;
-}
+    // if the user exists, send back a 401 because the user already exists
+    if (user) {
+      response.status(401).json({
+        success: false,
+        message: "User already exists",
+      });
+    } else {
+      try {
+        //Hashes the password using argon2
+        const hashedPassword = await argon2.hash(request.body.password);
+
+        //Adds the user to our db using the new username and the hashed password. NEVER STORE A USER PASSWORD IN PLAIN TEXT
+        const newUser = await prisma.user.create({
+          data: {
+            username: request.body.username,
+            password: hashedPassword,
+          },
+        });
+
+        //If the new user data is returned
+        if (newUser) {
+          //Send back a status of "Created"
+          response.status(201).json({
+            success: true,
+          });
+        } else {
+          response.status(500).json({
+            success: false,
+            message: "Something went wrong",
+          });
+        }
+      } catch (error) {
+        response.status(500).json({
+          success: false,
+          message: "Something went wrong",
+        });
+      }
+    }
+  } catch (e) {
+    response.status(500).json({
+      success: false,
+      message: "Something went wrong",
+    });
+  }
+});
+
+router.post("/login", async (request, response) => {
+  try {
+    const foundUser = await prisma.user.findFirstOrThrow({
+      where: {
+        username: request.body.username,
+      },
+    });
+
+    try {
+      const verifiedPassword = await argon2.verify(
+        foundUser.password,
+        request.body.password
+      );
+
+      if (verifiedPassword) {
+        const token = jwt.sign(
+          {
+            user: {
+              username: foundUser.username,
+              id: foundUser.id,
+            },
+          },
+          "thisIsASuperSecretKey"
+        );
+
+        response.status(200).json({
+          success: true,
+          token,
+        });
+      } else {
+        response.status(401).json({
+          success: false,
+          message: "Wrong username or password",
+        });
+      }
+    } catch (e) {
+      response.status(500).json({
+        success: false,
+        message: "Something went wrong",
+      });
+    }
+  } catch (e) {
+    response.status(401).json({
+      success: false,
+      message: "Wrong username or password",
+    });
+  }
+});
+
+export default router;
