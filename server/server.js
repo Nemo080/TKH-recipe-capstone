@@ -14,5 +14,5 @@ const logger = (req, _res, next) => {
 app.use(logger);
 
 app.listen(PORT, () => {
-  console.log(`Server is running on <http://localhost>:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
