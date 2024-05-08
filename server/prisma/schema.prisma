@@ -17,4 +17,23 @@ model User {
   id String @default(auto()) @id @map("_id") @db.ObjectId
   name String
   email String @unique
+  posts Post[]
+  recipes Recipe[]
+}
+model Post {
+  id String @id @map("_id") 
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title String
+  author User @relation(fields: [authorId], references: [id])
+  authorId String @db.ObjectId
+}
+model Recipe {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  title String
+  ingredients String
+  equipment String
+  instructions String
+  author User @relation(fields: [authorId], references: [id])
+  authorId String @db.ObjectId
 }
