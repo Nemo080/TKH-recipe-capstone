@@ -1,11 +1,11 @@
 import express from "express";
-import cors from 'cors';
+
 
 const app = express();
 
 
 app.use(express.json());
-app.use(cors());
+
 
 //added some routes, but will be its own folder
 app.get('/', (req, res)=>{
