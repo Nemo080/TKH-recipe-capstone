@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import authRoutes from "./routes/auth.js";
 dotenv.config()
 
 const app = express();
@@ -10,8 +11,9 @@ const logger = (req, _res, next) => {
     console.log(`${time} ${req.method}: ${req.url}`);
     next();
 };
-  
+app.use(express.json())
 app.use(logger);
+app.use("/auth", authRoutes)
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
