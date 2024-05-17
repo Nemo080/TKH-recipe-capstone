@@ -1,17 +1,14 @@
 import './App.css'
-import Login from './Login';
 
 function App() {
-  
 
   return (
-    /*<>
-    <h1>Working</h1>
-    </>
-    */
-    <div className="App">
-    <Login />
-    </div>
+    //frontend routing
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/recipes' element={<Recipes/>}/>
+    </Routes>
   )
 }
 

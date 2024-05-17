@@ -1,5 +1,5 @@
 // src/Login.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 const Login = () => {
   // State variables to hold username, password, and error message
