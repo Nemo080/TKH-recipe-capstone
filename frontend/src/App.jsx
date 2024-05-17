@@ -4,6 +4,10 @@ import Home from './components/Home.jsx'
 import Login from './components/Login.jsx'
 import Recipes from './components/Recipes.jsx'
 
+import Signup from './components/Signup';
+
+
+
 function App() {
 
   return (

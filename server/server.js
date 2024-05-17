@@ -1,5 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 import authRoutes from "./routes/auth.js";
 dotenv.config()
 
@@ -11,6 +12,7 @@ const logger = (req, _res, next) => {
     console.log(`${time} ${req.method}: ${req.url}`);
     next();
 };
+app.use(cors())
 app.use(express.json())
 app.use(logger);
 app.use("/auth", authRoutes)
