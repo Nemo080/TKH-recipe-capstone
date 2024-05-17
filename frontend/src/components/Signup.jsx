@@ -4,12 +4,7 @@ import axios from 'axios'
 // import { useNavigate } from "react-router-dom";
 function Signup() {
 
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [name, setName]= userstate('')
-  // const [error, setError] = useState('');
-
-  const [name, setName] = useState()
+    const [name, setName] = useState()
     const [email, setEmail] = useState()
     const [password, setPassword] = useState()
     // const navigate = useNavigate()
