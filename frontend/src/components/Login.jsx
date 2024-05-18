@@ -1,5 +1,5 @@
 // src/Login.js
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from "axios";
 
 const Login = () => {
@@ -30,7 +30,7 @@ const Login = () => {
         console.log("token collected")
       }
       else{
-        console.log("token not received")
+        console.log("token not collected")
       }
     })
     .catch(err => console.log(err))
