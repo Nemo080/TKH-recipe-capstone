@@ -1,7 +1,7 @@
 // // these are authentication routes
 
 import express from "express";
-import jwt, { verify } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import argon2 from "argon2";
 import prisma from "../db/index.js";
 
@@ -12,7 +12,7 @@ router.post("/signup", async (request, response) => {
     //Finds a user by their username
     const user = await prisma.user.findFirst({
       where: {
-        username: request.body.username,
+        email: request.body.email,
       },
     });
 
@@ -30,8 +30,9 @@ router.post("/signup", async (request, response) => {
         //Adds the user to our db using the new username and the hashed password. NEVER STORE A USER PASSWORD IN PLAIN TEXT
         const newUser = await prisma.user.create({
           data: {
-            username: request.body.username,
+            email: request.body.email,
             password: hashedPassword,
+            name: request.body.name,
           },
         });
 
@@ -42,12 +43,14 @@ router.post("/signup", async (request, response) => {
             success: true,
           });
         } else {
+          console.log("Here")
           response.status(500).json({
             success: false,
             message: "Something went wrong",
           });
         }
       } catch (error) {
+        console.log(error)
         response.status(500).json({
           success: false,
           message: "Something went wrong",
@@ -55,6 +58,7 @@ router.post("/signup", async (request, response) => {
       }
     }
   } catch (e) {
+    console.log(e)
     response.status(500).json({
       success: false,
       message: "Something went wrong",
@@ -66,7 +70,7 @@ router.post("/login", async (request, response) => {
   try {
     const foundUser = await prisma.user.findFirstOrThrow({
       where: {
-        username: request.body.username,
+        email: request.body.email,
       },
     });
 
@@ -79,8 +83,8 @@ router.post("/login", async (request, response) => {
       if (verifiedPassword) {
         const token = jwt.sign(
           {
-            user: {
-              username: foundUser.username,
+            email: {
+              email: foundUser.email,
               id: foundUser.id,
             },
           },
