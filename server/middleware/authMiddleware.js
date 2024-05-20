@@ -1,6 +1,6 @@
-const prisma = require("../db");
-const LocalStrategy = require("passport-local").Strategy;
-const bcrypt = require ("bcrypt");
+import { user as _user } from "../db";
+import { Strategy as LocalStrategy } from "passport-local";
+import { compare } from "bcrypt";
 
 function setupPassportLocal (passport){
     passport.use(
@@ -11,12 +11,12 @@ function setupPassportLocal (passport){
         async function (email, password, done) {
             try {
               // Find user by email
-              const user = await prisma.user.findFirstOrThrow({
+              const user = await _user.findFirstOrThrow({
                 where: { email: email },
               });
     
               // Verify user and password
-              if (!user || !(await bcrypt.compare(password, user.password))) {
+              if (!user || !(await compare(password, user.password))) {
                 return done(false, null);
               }
     
@@ -55,4 +55,4 @@ function checkIfAuthenticated(req, res, next) {
     }
 }
 
-module.exports = { setupPassportLocal, checkIfAuthenticated };
+export default { setupPassportLocal, checkIfAuthenticated };

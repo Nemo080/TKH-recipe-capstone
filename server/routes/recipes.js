@@ -4,7 +4,7 @@ import prisma from "../db/index.js";
 const router = express.Router();
 
 // POST route to create a new recipe
-router.post("/recipes", async (request, response) => {
+router.post("/", async (request, response) => {
   try {
     const existingRecipe = await prisma.recipe.findFirst({
       where: {
@@ -23,7 +23,8 @@ router.post("/recipes", async (request, response) => {
           data: {
             title: request.body.title,
             ingredients: request.body.ingredients,
-            directions: request.body.directions,
+            equipment: request.body.equipment,
+            instructions: request.body.instructions,
           },
         });
 
@@ -53,7 +54,7 @@ router.post("/recipes", async (request, response) => {
 });
 
 // PUT route to update an existing recipe
-router.put("/recipes/:id", async (request, response) => {
+router.put("/:id", async (request, response) => {
   try {
     const updatedRecipe = await prisma.recipe.update({
       where: {
@@ -62,7 +63,8 @@ router.put("/recipes/:id", async (request, response) => {
       data: {
         title: request.body.title,
         ingredients: request.body.ingredients,
-        directions: request.body.directions,
+        equipment: request.body.equipment,
+        instructions: request.body.instructions,
       },
     });
 
@@ -85,7 +87,7 @@ router.put("/recipes/:id", async (request, response) => {
 });
 
 // DELETE route to delete an existing recipe
-router.delete("/recipes/:id", async (request, response) => {
+router.delete("/:id", async (request, response) => {
   try {
     await prisma.recipe.delete({
       where: {
@@ -104,4 +106,16 @@ router.delete("/recipes/:id", async (request, response) => {
   }
 });
 
+// Get route to retrieve recipe
+router.get('/recipes', async (req, res)=>{
+  try {
+    const recipes = await prisma.recipe.findMany();
+    res.status(200).json({
+      success: true,
+      recipes
+    })
+  } catch (error) {
+    console.error(error + ' Error: something happened');
+  }
+})
 export default router;
