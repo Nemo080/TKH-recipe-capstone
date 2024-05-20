@@ -2,6 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
+import recipeRoutes from "./routes/recipes.js";
+
 dotenv.config()
 
 const app = express();
@@ -16,6 +18,9 @@ app.use(cors())
 app.use(express.json())
 app.use(logger);
 app.use("/auth", authRoutes)
+app.use('/recipe', recipeRoutes)
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
