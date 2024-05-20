@@ -26,7 +26,7 @@ const Login = () => {
       const userToken="userToken";
       localStorage.setItem(userToken, result.data.token)
       const token= localStorage.getItem(userToken)
-      if (userToken) {
+      if (token) {
         console.log("token collected")
       }
       else{
