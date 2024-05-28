@@ -7,7 +7,7 @@ import Recipes from './components/Recipes.jsx'
 
 import Signup from './components/Signup';
 
-import CreateRecipe from './components/CreateRecipe';
+import CRUDRecipe from './components/CRUDRecipe';
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       <Route path='/login' element={<Login/>}/>
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/recipes' element={<Recipes/>}/>
-      <Route path="/create-recipe" element={<CreateRecipe/>}/>
+      <Route path="/crud-recipe" element={<CRUDRecipe/>}/>
     </Routes>
   )
 }
