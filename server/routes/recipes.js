@@ -3,7 +3,7 @@ import prisma from '../db/index.js';
 
 const router = express.Router();
 
-
+// Create a new recipe
 router.post('/new-recipe', async (request, response) => {
   console.log('Received request:', request.body);
 
@@ -44,7 +44,8 @@ router.post('/new-recipe', async (request, response) => {
   }
 });
 
-
+// Update a recipe
+router.put('/recipes/:id', async (request, response) => {
   console.log('Received request:', request.body);
 
   try {
@@ -52,7 +53,7 @@ router.post('/new-recipe', async (request, response) => {
     const { title, ingredients, equipment, instructions } = request.body;
 
     const updatedRecipe = await prisma.recipe.update({
-
+      where: { id: Number(id) },
       data: {
         title,
         ingredients,
@@ -75,13 +76,15 @@ router.post('/new-recipe', async (request, response) => {
   }
 });
 
-
+// Delete a recipe
+router.delete('/recipes/:id', async (request, response) => {
+  console.log('Received request:', request.body);
 
   try {
     const { id } = request.params;
 
     await prisma.recipe.delete({
-
+      where: { id: Number(id) },
     });
 
     return response.status(200).json({
