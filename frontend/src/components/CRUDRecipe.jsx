@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import axios from 'axios';
 
+
 const RecipeForm = () => {
   const [id, setId] = useState('');
   const [title, setTitle] = useState('');
   const [ingredients, setIngredients] = useState('');
   const [directions, setDirections] = useState('');
   const [equipment, setEquipment] = useState('');
-
-  const handleCreate = async (e) => {
-    e.preventDefault();
 
     try {
       const response = await axios.post('http://localhost:3000/recipes/new-recipe', {
@@ -25,6 +23,7 @@ const RecipeForm = () => {
       setIngredients('');
       setDirections('');
       setEquipment('');
+
     } catch (err) {
       console.error('Error response:', err.response);
     }
@@ -48,6 +47,7 @@ const RecipeForm = () => {
       setIngredients('');
       setDirections('');
       setEquipment('');
+
     } catch (err) {
       console.error('Error response:', err.response);
     }
@@ -56,18 +56,13 @@ const RecipeForm = () => {
   const handleDelete = async (e) => {
     e.preventDefault();
 
-    try {
-      const response = await axios.delete(`http://localhost:3000/recipes/${id}`);
-
-      console.log(response.data);
-
-      setId('');
     } catch (err) {
       console.error('Error response:', err.response);
     }
   };
 
   return (
+
     <div>
       <h2>Recipe Form</h2>
       <form onSubmit={handleCreate}>
@@ -116,6 +111,7 @@ const RecipeForm = () => {
         <button type="button" onClick={handleUpdate}>Update Recipe</button>
         <button type="button" onClick={handleDelete}>Delete Recipe</button>
       </form>
+
     </div>
   );
 };
