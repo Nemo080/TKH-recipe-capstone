@@ -1,110 +1,106 @@
-import express from "express";
-import prisma from "../db/index.js";
+import express from 'express';
+import prisma from '../db/index.js';
 
 const router = express.Router();
 
-// POST route to create a new recipe
-router.post("/", async (request, response) => {
+// Create a new recipe
+router.post('/new-recipe', async (request, response) => {
+  console.log('Received request:', request.body);
+
   try {
+    const { title, ingredients, equipment, instructions } = request.body;
+
     const existingRecipe = await prisma.recipe.findFirst({
-      where: {
-        title: request.body.title,
-      },
+      where: { title },
     });
 
     if (existingRecipe) {
-      response.status(401).json({
+      return response.status(401).json({
         success: false,
-        message: "Recipe already exists",
+        message: 'Recipe already exists',
       });
-    } else {
-      try {
-        const newRecipe = await prisma.recipe.create({
-          data: {
-            title: request.body.title,
-            ingredients: request.body.ingredients,
-            equipment: request.body.equipment,
-            instructions: request.body.instructions,
-          },
-        });
-
-        if (newRecipe) {
-          response.status(201).json({
-            success: true,
-          });
-        } else {
-          response.status(500).json({
-            success: false,
-            message: "Something went wrong",
-          });
-        }
-      } catch (error) {
-        response.status(500).json({
-          success: false,
-          message: "Something went wrong",
-        });
-      }
     }
-  } catch (error) {
-    response.status(500).json({
-      success: false,
-      message: "Something went wrong",
-    });
-  }
-});
 
-// PUT route to update an existing recipe
-router.put("/:id", async (request, response) => {
-  try {
-    const updatedRecipe = await prisma.recipe.update({
-      where: {
-        id: parseInt(request.params.id),
-      },
+    const newRecipe = await prisma.recipe.create({
       data: {
-        title: request.body.title,
-        ingredients: request.body.ingredients,
-        equipment: request.body.equipment,
-        instructions: request.body.instructions,
+        title,
+        ingredients,
+        equipment,
+        instructions,
       },
     });
 
-    if (updatedRecipe) {
-      response.status(200).json({
-        success: true,
-      });
-    } else {
-      response.status(404).json({
-        success: false,
-        message: "Recipe not found",
-      });
-    }
-  } catch (error) {
-    response.status(500).json({
-      success: false,
-      message: "Something went wrong",
-    });
-  }
-});
-
-// DELETE route to delete an existing recipe
-router.delete("/:id", async (request, response) => {
-  try {
-    await prisma.recipe.delete({
-      where: {
-        id: parseInt(request.params.id),
-      },
-    });
-    response.status(200).json({
+    return response.status(201).json({
       success: true,
-      message: "Recipe deleted successfully",
+      recipe: newRecipe,
     });
   } catch (error) {
-    response.status(500).json({
+    console.error('Error creating recipe:', error);
+    return response.status(500).json({
       success: false,
-      message: "Something went wrong",
+      message: 'Something went wrong',
+      error: error.message,
     });
   }
 });
+
+// Update a recipe
+router.put('/recipes/:id', async (request, response) => {
+  console.log('Received request:', request.body);
+
+  try {
+    const { id } = request.params;
+    const { title, ingredients, equipment, instructions } = request.body;
+
+    const updatedRecipe = await prisma.recipe.update({
+      where: { id: Number(id) },
+      data: {
+        title,
+        ingredients,
+        equipment,
+        instructions,
+      },
+    });
+
+    return response.status(200).json({
+      success: true,
+      recipe: updatedRecipe,
+    });
+  } catch (error) {
+    console.error('Error updating recipe:', error);
+    return response.status(500).json({
+      success: false,
+      message: 'Something went wrong',
+      error: error.message,
+    });
+  }
+});
+
+// Delete a recipe
+router.delete('/recipes/:id', async (request, response) => {
+  console.log('Received request:', request.body);
+
+  try {
+    const { id } = request.params;
+
+    await prisma.recipe.delete({
+      where: { id: Number(id) },
+    });
+
+    return response.status(200).json({
+      success: true,
+      message: 'Recipe deleted successfully',
+    });
+  } catch (error) {
+    console.error('Error deleting recipe:', error);
+    return response.status(500).json({
+      success: false,
+      message: 'Something went wrong',
+      error: error.message,
+    });
+  }
+});
+
 
 // Get route to retrieve recipe
 router.get('/recipes', async (req, res)=>{
@@ -141,4 +137,5 @@ router.get('/recipes', async (req, res)=>{
     })
   };
 });
+
 export default router;
