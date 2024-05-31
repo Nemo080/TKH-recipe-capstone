@@ -9,6 +9,8 @@ import Signup from './components/Signup';
 import CreateRecipe from './components/CreateRecipe';
 
 
+
+
 function App() {
 
   return (
@@ -19,6 +21,7 @@ function App() {
       <Route path='/signup' element={<Signup/>}/>
       <Route path='/recipes' element={<Recipes/>}/>
       <Route path="/create-recipe" element={<CreateRecipe/>}/>
+      <Route path='/cuisine/:type' element={<Recipes/>}/>
     </Routes>
   )
 }

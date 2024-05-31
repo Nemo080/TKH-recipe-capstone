@@ -118,4 +118,27 @@ router.get('/recipes', async (req, res)=>{
     console.error(error + ' Error: something happened');
   }
 })
+// Get route to filter through recipes in the database
+router.get('/recipes', async (req, res)=>{
+  try {
+    const filters = await prisma.recipe.findMany({
+      where: {
+        include: {
+          recipes: {
+            published: true,
+          },
+        },
+      },
+    });
+    res.status(201).json({
+      success: true,
+      filters
+    });
+  } catch (error) {
+    res.status(502).json({
+      success: false,
+      message: 'Something crashed',
+    })
+  };
+});
 export default router;
