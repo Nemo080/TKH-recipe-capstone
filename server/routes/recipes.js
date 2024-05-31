@@ -119,7 +119,7 @@ router.get('/recipes', async (req, res)=>{
   }
 })
 // Get route to filter through recipes in the database
-router.get('/recipes', async (req, res)=>{
+router.get('/recipes/published', async (req, res)=>{
   try {
     const filters = await prisma.recipe.findMany({
       where: {

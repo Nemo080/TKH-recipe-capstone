@@ -5,10 +5,16 @@ import Cuisine from "./Cuisine";
 // function that makes an API call to get a random set of recipes
 function Recipes(){
  const [recipe, setRecipe] = useState([]);
+ const [localRecipe, setLocalRecipe]= useState([]);
  useEffect(()=>{
     getRecipes();
+    localRecipes();
     },[]);
-    
+    const localRecipes = async () =>{
+        const data = await fetch('http://localhost:3000/recipe/recipes');
+        const recipes = await data.json();
+        console.log(recipes)
+    }
     const getRecipes = async () =>{
        const check = localStorage.getItem('recipes');
        if (check) {
@@ -25,6 +31,19 @@ function Recipes(){
         <>
         <Category/>
         <Cuisine/>
+        <div>
+        {localRecipe.map(item=>{
+                return(
+                    <div key={item.id}>
+                        <p>{item.title}</p>
+                        <p>{item.ingredients}</p>
+                        <p>{item.equipment}</p>
+                        <p>{item.directions}</p>
+                        <p>{item.author}</p>
+                    </div>
+                );
+            })};
+        </div>
         <div className="recipe-card">
             {recipe.map(item=>{
                 return(
