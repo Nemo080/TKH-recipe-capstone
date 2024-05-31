@@ -101,4 +101,41 @@ router.delete('/recipes/:id', async (request, response) => {
   }
 });
 
+
+// Get route to retrieve recipe
+router.get('/recipes', async (req, res)=>{
+  try {
+    const recipes = await prisma.recipe.findMany();
+    res.status(200).json({
+      success: true,
+      recipes
+    })
+  } catch (error) {
+    console.error(error + ' Error: something happened');
+  }
+})
+// Get route to filter through recipes in the database
+router.get('/recipes/published', async (req, res)=>{
+  try {
+    const filters = await prisma.recipe.findMany({
+      where: {
+        include: {
+          recipes: {
+            published: true,
+          },
+        },
+      },
+    });
+    res.status(201).json({
+      success: true,
+      filters
+    });
+  } catch (error) {
+    res.status(502).json({
+      success: false,
+      message: 'Something crashed',
+    })
+  };
+});
+
 export default router;
