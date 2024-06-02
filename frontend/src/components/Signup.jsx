@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "/src/index.css";
 // import { Link } from "react-router-dom";
 import axios from 'axios'
 // import { useNavigate } from "react-router-dom";
@@ -22,6 +23,7 @@ function Signup() {
   
   return (
     <>
+        <h1 className= " bg-orange-600 ">yummage</h1>
       <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
         <div className="bg-white p-3 rounded w-25">
         <h2><center>Sign Up</center></h2>
