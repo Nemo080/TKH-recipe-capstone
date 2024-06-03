@@ -6,7 +6,7 @@ import Recipes from './components/Recipes.jsx'
 
 import Signup from './components/Signup';
 
-import CreateRecipe from './components/CreateRecipe';
+import CRUDRecipe from './components/CRUDRecipe';
 
 
 
