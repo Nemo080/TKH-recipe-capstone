@@ -9,6 +9,7 @@ const RecipeForm = () => {
   const [ingredients, setIngredients] = useState('');
   const [directions, setDirections] = useState('');
   const [equipment, setEquipment] = useState('');
+  const [authorId, setAuthorId] = useState('');
   const [modal, setModal] = useState('');
 
   const handleCreate = async (e) => {
@@ -18,7 +19,8 @@ const RecipeForm = () => {
         title,
         ingredients,
         instructions: directions,
-        equipment
+        equipment,
+        authorId
       });
 
       console.log(response.data);
@@ -26,6 +28,7 @@ const RecipeForm = () => {
       setIngredients('');
       setDirections('');
       setEquipment('');
+      setAuthorId('');
       setModal('');
     } catch (err) {
       console.error('Error response:', err.response);
@@ -39,7 +42,8 @@ const RecipeForm = () => {
         title,
         ingredients,
         instructions: directions,
-        equipment
+        equipment,
+        authorId
       });
 
       console.log(response.data);
@@ -48,6 +52,7 @@ const RecipeForm = () => {
       setIngredients('');
       setDirections('');
       setEquipment('');
+      setAuthorId('');
       setModal('');
     } catch (err) {
       console.error('Error response:', err.response);
@@ -97,6 +102,10 @@ const RecipeForm = () => {
                 <label className="label">Directions:</label>
                 <textarea className="textarea textarea-bordered" value={directions} onChange={(e) => setDirections(e.target.value)} required />
               </div>
+              <div className="form-control">
+                <label className="label">Author ID:</label>
+                <input type="text" className="input input-bordered" value={authorId} onChange={(e) => setAuthorId(e.target.value)} required />
+              </div>
               <div className="modal-action">
                 <button type="submit" className="btn btn-primary">Save</button>
                 <button type="button" className="btn" onClick={() => setModal('')}>Cancel</button>
@@ -131,6 +140,10 @@ const RecipeForm = () => {
               <div className="form-control">
                 <label className="label">Directions:</label>
                 <textarea className="textarea textarea-bordered" value={directions} onChange={(e) => setDirections(e.target.value)} required />
+              </div>
+              <div className="form-control">
+                <label className="label">Author ID:</label>
+                <input type="text" className="input input-bordered" value={authorId} onChange={(e) => setAuthorId(e.target.value)} required />
               </div>
               <div className="modal-action">
                 <button type="submit" className="btn btn-primary">Update</button>

@@ -8,8 +8,21 @@ router.post('/new-recipe', async (request, response) => {
   console.log('Received request:', request.body);
 
   try {
-    const { title, ingredients, equipment, instructions } = request.body;
+    const { title, ingredients, equipment, instructions, authorId } = request.body;
 
+    // Verify the user exists
+    const existingUser = await prisma.user.findUnique({
+      where: { id: authorId },
+    });
+
+    if (!existingUser) {
+      return response.status(404).json({
+        success: false,
+        message: 'Author not found',
+      });
+    }
+
+    // Check if a recipe with the same title already exists
     const existingRecipe = await prisma.recipe.findFirst({
       where: { title },
     });
@@ -21,12 +34,14 @@ router.post('/new-recipe', async (request, response) => {
       });
     }
 
+    // Create a new recipe
     const newRecipe = await prisma.recipe.create({
       data: {
         title,
         ingredients,
         equipment,
         instructions,
+        authorId,
       },
     });
 
@@ -50,15 +65,28 @@ router.put('/recipes/:id', async (request, response) => {
 
   try {
     const { id } = request.params;
-    const { title, ingredients, equipment, instructions } = request.body;
+    const { title, ingredients, equipment, instructions, authorId } = request.body;
+
+    // Verify the user exists
+    const existingUser = await prisma.user.findUnique({
+      where: { id: authorId },
+    });
+
+    if (!existingUser) {
+      return response.status(404).json({
+        success: false,
+        message: 'Author not found',
+      });
+    }
 
     const updatedRecipe = await prisma.recipe.update({
-      where: { id: Number(id) },
+      where: { id: id },
       data: {
         title,
         ingredients,
         equipment,
         instructions,
+        authorId,
       },
     });
 
@@ -84,7 +112,7 @@ router.delete('/recipes/:id', async (request, response) => {
     const { id } = request.params;
 
     await prisma.recipe.delete({
-      where: { id: Number(id) },
+      where: { id: id },
     });
 
     return response.status(200).json({
@@ -101,41 +129,44 @@ router.delete('/recipes/:id', async (request, response) => {
   }
 });
 
-
-// Get route to retrieve recipe
-router.get('/recipes', async (req, res)=>{
+// Get route to retrieve all recipes
+router.get('/recipes', async (req, res) => {
   try {
     const recipes = await prisma.recipe.findMany();
     res.status(200).json({
       success: true,
-      recipes
-    })
+      recipes,
+    });
   } catch (error) {
-    console.error(error + ' Error: something happened');
+    console.error('Error fetching recipes:', error);
+    res.status(500).json({
+      success: false,
+      message: 'Something went wrong',
+      error: error.message,
+    });
   }
-})
+});
+
 // Get route to filter through recipes in the database
-router.get('/recipes/published', async (req, res)=>{
+router.get('/recipes/published', async (req, res) => {
   try {
     const filters = await prisma.recipe.findMany({
       where: {
-        include: {
-          recipes: {
-            published: true,
-          },
-        },
+        published: true,
       },
     });
     res.status(201).json({
       success: true,
-      filters
+      filters,
     });
   } catch (error) {
+    console.error('Error filtering recipes:', error);
     res.status(502).json({
       success: false,
       message: 'Something crashed',
-    })
-  };
+      error: error.message,
+    });
+  }
 });
 
 export default router;
