@@ -11,7 +11,7 @@ export default function Navbar() {
         </div>
           <ul>
           <li>
-              <Link to="/create-recipe" className='navtext'>Create</Link>
+              <Link to="/crud-recipe" className='navtext'>Create</Link>
             </li>
             <li>
               <Link to="/recipes" className='navtext'>Explore</Link>
