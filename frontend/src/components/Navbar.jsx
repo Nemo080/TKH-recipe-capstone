@@ -14,7 +14,7 @@ export default function Navbar() {
               <Link to="/create-recipe" className='navtext'>Create</Link>
             </li>
             <li>
-              <Link to="/recipes" className='navtext'>Browse</Link>
+              <Link to="/recipes" className='navtext'>Explore</Link>
             </li>
             <li>
               <Link to="/login" className='navtext'>Login</Link>
