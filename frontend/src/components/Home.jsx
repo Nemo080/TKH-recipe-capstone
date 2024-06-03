@@ -2,11 +2,8 @@
 const Home = () => {
   return (
     <>
-      <div>
-      </div>
-      <div className="homegif">
-        <img className="homegif" src="/src/assets/froggy.gif"/>
-      </div>
+      <h3>Need a place to save your delicous recipes?</h3>
+      <img className="homegif" src="/src/assets/froggy.gif"/>
       
     </>
   )

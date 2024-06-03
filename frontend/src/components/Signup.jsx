@@ -28,51 +28,50 @@ function Signup() {
         <div className="signup-content">
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label htmlFor="email">
-                        <strong>Name</strong>
+                    <label htmlFor="email" className="signup-label">
+                        Name
                     </label>
                     <br></br>
                     <input type="text" 
                     placeholder='Enter Name' 
                     autoComplete='off' 
                     name='email' 
-                    className='form-control rounded-0'
+                    className='input'
                     onChange={(e) => setName(e.target.value)}
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="email">
-                        <strong>Email</strong>
+                    <label htmlFor="email" className="signup-label">
+                        Email
                     </label>
                     <br></br>
                     <input type="text" 
                     placeholder='Enter Email' 
                     autoComplete='off' 
                     name='email' 
-                    className='form-control rounded-0' 
+                    className='input' 
                     onChange={(e) => setEmail(e.target.value)}
 
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="email">
-                        <strong>Password</strong>
+                    <label htmlFor="email" className="signup-label">
+                        Password
                     </label>
                     <br></br>
                     <input type="password" 
                     placeholder='Enter Password' 
                     name='password' 
-                    className='form-control rounded-0' 
+                    className='input'
                     onChange={(e) => setPassword(e.target.value)}
-
                     />
                 </div>
                 <p className="signup-p">Already have an account?
                 <Link to="/login" className="signup-login"> Log in
                 </Link></p>
-                <button type="submit" className="btn btn-success w-100 rounded-0">
-                    Sign Up
-                </button>
+                    <button type="submit" className="signup-submit" >
+                    <Link to="http://localhost:3000/auth/signup" className="signup-submit">SIGN UP</Link>
+                    </button>
                 </form>
                 </div>
     </div>
