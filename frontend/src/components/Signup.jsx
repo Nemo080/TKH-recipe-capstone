@@ -1,5 +1,6 @@
 import { useState } from "react";
-// import { Link } from "react-router-dom";
+import "/src/index.css";
+import { Link } from "react-router-dom";
 import axios from 'axios'
 // import { useNavigate } from "react-router-dom";
 function Signup() {
@@ -22,56 +23,56 @@ function Signup() {
   
   return (
     <>
-      <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-        <div className="bg-white p-3 rounded w-25">
-        <h2><center>Sign Up</center></h2>
-
+      <div className="signup-container">
+        <h2 className="signup-header">Create your account</h2>
+        <div className="signup-content">
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
-                    <label htmlFor="email">
-                        <strong>Name</strong>
+                    <label htmlFor="email" className="signup-label">
+                        Name
                     </label>
+                    <br></br>
                     <input type="text" 
                     placeholder='Enter Name' 
                     autoComplete='off' 
                     name='email' 
-                    className='form-control rounded-0'
+                    className='input'
                     onChange={(e) => setName(e.target.value)}
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="email">
-                        <strong>Email</strong>
+                    <label htmlFor="email" className="signup-label">
+                        Email
                     </label>
+                    <br></br>
                     <input type="text" 
                     placeholder='Enter Email' 
                     autoComplete='off' 
                     name='email' 
-                    className='form-control rounded-0' 
+                    className='input' 
                     onChange={(e) => setEmail(e.target.value)}
 
                     />
                 </div>
                 <div className="mb-3">
-                    <label htmlFor="email">
-                        <strong>Password</strong>
+                    <label htmlFor="email" className="signup-label">
+                        Password
                     </label>
+                    <br></br>
                     <input type="password" 
                     placeholder='Enter Password' 
                     name='password' 
-                    className='form-control rounded-0' 
+                    className='input'
                     onChange={(e) => setPassword(e.target.value)}
-
                     />
                 </div>
-                <button type="submit" className="btn btn-success w-100 rounded-0">
-                    Sign Up
-                </button>
+                <p className="signup-p">Already have an account?
+                <Link to="/login" className="signup-login"> Log in
+                </Link></p>
+                    <button type="submit" className="signup-submit" >
+                    <Link to="http://localhost:3000/auth/signup" className="signup-submit">SIGN UP</Link>
+                    </button>
                 </form>
-                <p>Already have an account?</p>
-                {/* <Link to="/login" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
-                    Login
-                </Link> */}
                 </div>
     </div>
     </>
