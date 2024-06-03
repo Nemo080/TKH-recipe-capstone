@@ -1,9 +1,14 @@
 
 const Home = () => {
   return (
-    <div>
-      Home Page
-    </div>
+    <>
+      <div>
+      </div>
+      <div className="homegif">
+        <img className="homegif" src="/src/assets/froggy.gif"/>
+      </div>
+      
+    </>
   )
 }
 

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "/src/index.css";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from 'axios'
 // import { useNavigate } from "react-router-dom";
 function Signup() {
@@ -23,16 +23,15 @@ function Signup() {
   
   return (
     <>
-        <h1 className= " bg-orange-600 ">yummage</h1>
-      <div className="d-flex justify-content-center align-items-center bg-secondary vh-100">
-        <div className="bg-white p-3 rounded w-25">
-        <h2><center>Sign Up</center></h2>
-
+      <div className="signup-container">
+        <h2 className="signup-header">Create your account</h2>
+        <div className="signup-content">
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="email">
                         <strong>Name</strong>
                     </label>
+                    <br></br>
                     <input type="text" 
                     placeholder='Enter Name' 
                     autoComplete='off' 
@@ -45,6 +44,7 @@ function Signup() {
                     <label htmlFor="email">
                         <strong>Email</strong>
                     </label>
+                    <br></br>
                     <input type="text" 
                     placeholder='Enter Email' 
                     autoComplete='off' 
@@ -58,6 +58,7 @@ function Signup() {
                     <label htmlFor="email">
                         <strong>Password</strong>
                     </label>
+                    <br></br>
                     <input type="password" 
                     placeholder='Enter Password' 
                     name='password' 
@@ -66,14 +67,13 @@ function Signup() {
 
                     />
                 </div>
+                <p className="signup-p">Already have an account?
+                <Link to="/login" className="signup-login"> Log in
+                </Link></p>
                 <button type="submit" className="btn btn-success w-100 rounded-0">
                     Sign Up
                 </button>
                 </form>
-                <p>Already have an account?</p>
-                {/* <Link to="/login" className="btn btn-default border w-100 bg-light rounded-0 text-decoration-none">
-                    Login
-                </Link> */}
                 </div>
     </div>
     </>

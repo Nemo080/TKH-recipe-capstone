@@ -7,3 +7,94 @@
     border-radius: 2rem;
 }
 
+body{
+    font-family: "Montserrat", sans-serif;
+    justify-content: center;
+    align-items:center ;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 1.3rem; 
+    padding-right: 3rem;
+    padding-top: -8rem;
+    font-family: "Montserrat", sans-serif;
+}
+.nav-name{
+    color: #FF7043;
+    font-family: "Quicksand", sans-serif;
+    font-size: 3.5rem;
+}
+.navbar > ul { 
+    display: flex;
+    gap: 3rem;
+    list-style: none;
+    font-size: 20px;
+}
+.navbar a {
+    text-decoration: none;
+}
+
+.navsignup {
+    background-color: #7FB685;
+    color: white;
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.navtext{
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
+}
+.homegif{
+    /* justify-content: flex-end; */
+    display: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.signup-container{
+    height: 500px;
+    width: 490px;
+    border: solid;
+    border-width: 4px;
+    border-color:#7FB685;
+    border-radius: 10px;
+    /* padding-left: 40px;
+    padding: 10px; */
+    box-shadow: 10px 10px 20px 5px #7FB685 ;
+    /* --shadow-color: hsl(220deg 60% 50%) */
+    display: center;
+    margin-left: auto;
+    margin-right: auto;
+  
+}
+.signup-content {
+    padding-left: 40px;
+
+}
+
+.signup-header{
+    text-align: center;
+    font-family: "Merriweather", serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 36px;
+}
+
+.signup-login{
+    color: #7FB685;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 20px;
+}
+.signup-p{
+    font-size: 20px;
+}
