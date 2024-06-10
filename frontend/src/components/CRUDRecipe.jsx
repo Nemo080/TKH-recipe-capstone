@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import 'tailwindcss/tailwind.css';
-import 'daisyui/dist/full.css';
+
 
 const RecipeForm = () => {
   const [id, setId] = useState('');
