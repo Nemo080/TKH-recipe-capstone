@@ -4,3 +4,8 @@
 @tailwind utilities;
 
 /* You can also add any custom styles here */
+
+.custom-border {
+    border: none;
+    border-color: rgba(127,182,133, 0.3);
+}
