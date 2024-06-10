@@ -37,7 +37,8 @@ function App() {
   }
   return (
     <>
-       <div className="content">
+    <div  className="page-container">
+       <div className="content-wrap">
       <BrowserRouter>
           <div className="App">
             {isLoggedIn ? (
@@ -61,6 +62,7 @@ function App() {
       </BrowserRouter>
       </div>
       <Footer />
+      </div>
     </>
   )
 }

@@ -25,7 +25,7 @@ function Dashnav({ handleLogout }) {
               <Link to="/crud-recipe" className='navtext'>Create</Link>
             </li>
             <li>
-              <Link to="/recipes" className='navtext'>Recipes</Link>
+              <Link to="/recipes" className='navtext'>Explore</Link>
             </li>
             <li>
               <Link to="/login" className='navtext' onClick={logout}>Logout</Link>

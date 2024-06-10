@@ -15,29 +15,13 @@ body{
     padding: 0;
     height: 100%;
 }
-/* body, html {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-} */
-/*   
-.app {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-} */
-
-.content {
-    flex-grow: 1; /* Take up remaining space */
-}
-
 .App{
     margin-left: 2rem;
     margin-right: 2rem;
     display: flex;
     flex-direction: column;
-    /* height: 100vh; */
 }
+
 .navbar {
     display: flex;
     align-items: center;
@@ -90,16 +74,6 @@ body{
     border-width: 3px !important;
     border-radius: 10px;
 }
-.nav-drop :hover{
-    /* background-color: #7FB685; */
-}
-
-/* .homegif{
-    justify-content: flex-end;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-} */
 
 .signup-container{
     height: 591px;
@@ -112,7 +86,7 @@ body{
     display: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     display:flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -132,7 +106,7 @@ body{
     display: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 2rem;
+    margin-top: 1.5rem;
     display:flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -173,8 +147,6 @@ body{
     margin-left: auto;
     margin-right: auto;
     background-color: 	rgb(127,182,133, 0.3);
-    /* margin-bottom: 1.5rem; */
-    /* padding-left: 1rem; */
     font-family: "Montserrat", sans-serif;
     padding-left: 20px;
     font-weight: 400;
@@ -200,38 +172,39 @@ body{
     width: 30px;
 }
 
+.page-container {
+    position: relative;
+    min-height: 100vh;
+}
+
+.content-wrap {
+    padding-bottom: 2.5rem;    /* Footer height */
+}
+
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
-    background-color: #f1f1f1;
-    text-align: center;
-    padding: 10px 0;
-    /* margin-top: 20px; */
-}
-  
-.footer p {
-    margin: 0;
-    color: #333;
-    font-size: 14px;
+    height: 2.5rem;            /* Footer height */
 }
 
 .home-hero{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: auto auto;
     align-items: center;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    gap: 3rem;
 }
 .home-header{
     font-size: 5rem;
-    display: flex;
     justify-content: center;
     font-weight: 600;
     font-family: "Merriweather", serif;
-    margin-bottom: 30px;
 }
 .home-h3{
-    font-size: 50px;
+    font-size: 40px;
+    
 }
 .hero-link{
     background-color: #7FB685;
@@ -242,5 +215,15 @@ body{
     border-radius: 10px;
     font-weight: bold;
     font-size: 35px;
-    margin: 50px;
+}
+.hero-content{
+    z-index: 0;
+    display: flex;
+    align-items: flex-start !important;
+    max-width: 80rem;
+    gap: 1rem;
+    padding: 1rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
 }
