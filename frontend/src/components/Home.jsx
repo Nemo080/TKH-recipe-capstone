@@ -1,10 +1,19 @@
+import React from 'react'
+import { Link } from 'react-router-dom';
 
-const Home = () => {
+function Home() {
   return (
     <>
-      <h3>Need a place to save your delicous recipes?</h3>
-      <img className="homegif" src="/src/assets/froggy.gif"/>
-      
+      <h2 className="home-header">Welcome to yummage!</h2>
+      <div className="home-hero">
+        <div>
+          <h3 className='home-h3'>A place to collect your recipes</h3>
+            <div>
+              <Link to="/signup" className='hero-link'>Sign up and save now</Link>
+            </div>
+        </div>
+        <img className="homegif" src="/src/assets/froggy.gif"/>
+      </div>
     </>
   )
 }
