@@ -16,6 +16,9 @@ export default function Navbar() {
             <li>
               <Link to="/recipes" className='navtext'>Explore</Link>
             </li>
+             <li>
+                <Link to="/user-profile" className='navtext'>Dashboard</Link>
+            </li>
             <li>
               <Link to="/login" className='navtext'>Login</Link>
             </li>

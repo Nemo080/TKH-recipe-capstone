@@ -11,6 +11,7 @@ import Dashnav from './components/Dashnav';
 import CRUDRecipe from './components/CRUDRecipe';
 import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
+import UserProfile from './components/UserProfile';
 
 
 
@@ -58,6 +59,7 @@ function App() {
             <Route path='/dashboard' element={<Dashboard />}/>
             <Route path="/recipes" element={isLoggedIn ? <Recipes /> : <Navigate to="/login" />} />
             <Route path="/crud-recipe" element={isLoggedIn ? <CRUDRecipe /> : <Navigate to="/login" />} />
+            <Route path="/user-profile" element={<UserProfile/>}/>
           </Routes>
       </BrowserRouter>
       </div>
