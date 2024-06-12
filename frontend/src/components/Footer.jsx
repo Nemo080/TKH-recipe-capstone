@@ -11,11 +11,11 @@ const Footer = () => {
 
   return (
     <>
-      <div className="footer footer-center p-4 bg-base-300 text-base-content object-bottom">
+      <footer className="footer footer-center p-4 bg-base-300 text-base-content">
         <div>
         <p>{`© ${year}. All Rights Reserved.`}</p>
         </div>
-      </div>
+      </footer>
     </>
   );
 };
