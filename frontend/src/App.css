@@ -16,27 +16,31 @@ body{
     height: 100%;
 }
 .App{
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    /* margin-top: 2.5rem; */
     display: flex;
     flex-direction: column;
+    /* margin-top: none !important; */
 }
 
 .navbar {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-between;
-    padding-left: 1.3rem; 
-    padding-right: 3rem;
-    padding-top: -8rem;
+    /* padding-left: 1.3rem;  */
+    /* padding-right: 3rem; */
+    /* padding-top: -8rem !important; */
     font-family: "Montserrat", sans-serif;
     position: inherit;
+    margin-top: 1.5rem;
 }
 .nav-name{
     color: #FF7043;
     font-family: "Quicksand", sans-serif;
     font-size: 3.5rem;
     font-weight: 600;
+    margin-top: 0;
 }
 .navbar > ul { 
     display: flex;
@@ -60,7 +64,7 @@ body{
 }
 
 .signup-button{
-    padding-right: 1.5rem;
+    /* padding-right: 1.5rem; */
 }
 
 .navtext{
@@ -86,7 +90,7 @@ body{
     display: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
     display:flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -106,7 +110,7 @@ body{
     display: center;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 1.5rem;
+    /* margin-top: 1.5rem; */
     display:flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -145,10 +149,11 @@ body{
     font-size: 20px;
     display: center;
     margin-left: auto;
-    margin-right: auto;
+    /* margin-right: auto; */
     background-color: 	rgb(127,182,133, 0.3);
     font-family: "Montserrat", sans-serif;
     padding-left: 20px;
+    padding-right: -30px;
     font-weight: 400;
 }
 
@@ -156,16 +161,18 @@ body{
     font-size: 16px;
     font-weight: 600;
     margin-top: 1.5rem;
-    padding-bottom: none;
+
 }
-.yummage-submit{
+.yummagesubmit{
     background-color: #7FB685 !important;
-    width: 385px;
-    height: 50px;
+    width: 385px !important;
+    height: 50px !important;
     color: white !important;
     font-size: 20px !important;
     font-weight: 700 !important;
     text-decoration: none;
+    border: none;
+    border-radius: 10px;
 }
 
 .user-icon{
@@ -201,6 +208,7 @@ body{
     justify-content: center;
     font-weight: 600;
     font-family: "Merriweather", serif;
+    margin: 0%;
 }
 .home-h3{
     font-size: 40px;
@@ -215,12 +223,13 @@ body{
     border-radius: 10px;
     font-weight: bold;
     font-size: 35px;
+    text-decoration: none;
 }
 .hero-content{
     z-index: 0;
     display: flex;
     align-items: flex-start !important;
-    max-width: 80rem;
+    /* max-width: 80rem; */
     gap: 1rem;
     padding: 1rem;
     flex-direction: column;

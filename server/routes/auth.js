@@ -38,10 +38,21 @@ router.post("/signup", async (request, response) => {
 
         //If the new user data is returned
         if (newUser) {
-          //Send back a status of "Created"
+          const token = jwt.sign(
+            {
+              email: {
+                email: foundUser.email,
+                id: foundUser.id,
+              },
+            },
+            "thisIsASuperSecretKey"
+          );
+  
           response.status(201).json({
             success: true,
+            token,
           });
+          //Send back a status of "Created"
         } else {
           console.log("Here")
           response.status(500).json({
