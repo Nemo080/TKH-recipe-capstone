@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import 'tailwindcss/tailwind.css';
-//import 'daisyui/dist/full.css';
+import 'daisyui/dist/full.css';
 
 const RecipeForm = () => {
   const [id, setId] = useState('');
@@ -85,7 +85,7 @@ const RecipeForm = () => {
       {/* Create Recipe Modal */}
       {modal === 'create' && (
         <div className="modal modal-open">
-          <div className="modal-box" style={{ fontFamily: 'Merriweather' }}>
+          <div className="modal-box" style={{ fontFamily: 'Quicksand' }}>
             <h3 className="font-bold text-lg">Create Recipe</h3>
             <form onSubmit={handleCreate}>
               <div className="form-control">
@@ -120,7 +120,7 @@ const RecipeForm = () => {
       {/* Update Recipe Modal */}
       {modal === 'update' && (
         <div className="modal modal-open">
-          <div className="modal-box" style={{ fontFamily: 'Merriweather' }}>
+          <div className="modal-box" style={{ fontFamily: 'Quicksand' }}>
             <h3 className="font-bold text-lg">Update Recipe</h3>
             <form onSubmit={handleUpdate}>
               <div className="form-control">
@@ -159,7 +159,7 @@ const RecipeForm = () => {
       {/* Delete Recipe Modal */}
       {modal === 'delete' && (
         <div className="modal modal-open">
-          <div className="modal-box" style={{ fontFamily: 'Merriweather' }}>
+          <div className="modal-box" style={{ fontFamily: 'Quicksand' }}>
             <h3 className="font-bold text-lg">Delete Recipe</h3>
             <form onSubmit={handleDelete}>
               <div className="form-control">

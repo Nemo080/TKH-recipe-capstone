@@ -9,11 +9,8 @@ import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Dashnav from './components/Dashnav';
 import CRUDRecipe from './components/CRUDRecipe';
-import Dashboard from './components/Dashboard';
 import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';
-
-
 
 
 function App() {
@@ -56,10 +53,9 @@ function App() {
             <Route path='/' element={<Home/>}/>
             <Route path='/login' element={<Login handleLogin={handleLogin}/>}/>
             <Route path='/signup' element={<Signup/>}/>
-            <Route path='/dashboard' element={<Dashboard />}/>
+            <Route path="/user-profile" element={isLoggedIn ? <UserProfile/> : <Navigate to="/login" />}/>
             <Route path="/recipes" element={isLoggedIn ? <Recipes /> : <Navigate to="/login" />} />
             <Route path="/crud-recipe" element={isLoggedIn ? <CRUDRecipe /> : <Navigate to="/login" />} />
-            <Route path="/user-profile" element={<UserProfile/>}/>
           </Routes>
       </BrowserRouter>
       </div>
