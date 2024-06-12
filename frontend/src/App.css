@@ -232,10 +232,10 @@ body{
     color: rgba(0, 0, 0, 0.3); /* 30% black */
   }
   
-  .dark-mode .input-green {
+.dark-mode .input-green {
     background-color: rgba(127, 182, 133, 0.5); /* 50% opacity */
     color: rgba(255, 255, 255, 0.5); /* 50% white */
-  }
+}
 
 /* src/styles.css */
 .recipe-container {
@@ -244,7 +244,6 @@ body{
     border-width: 4px;
     border-color: #7FB685;
     border-radius: 10px;
-    box-shadow: 10px 10px 20px 5px #7FB685;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -273,7 +272,7 @@ body{
     border-width: 4px;
     border-color: #7FB685;
     border-radius: 10px;
-    box-shadow: 10px 10px 20px 5px #7FB685;
+    /*box-shadow: 10px 10px 20px 5px #7FB685;*/
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
