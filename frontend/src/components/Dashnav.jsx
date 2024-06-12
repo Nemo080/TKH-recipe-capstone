@@ -3,6 +3,7 @@ import { Link, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import App from '../App';
 import Dashboard from './Dashboard';
+import UserProfile from './UserProfile';
 
 function Dashnav({ handleLogout }) {
 
@@ -16,7 +17,7 @@ function Dashnav({ handleLogout }) {
   return (
     <nav className="navbar">
         <div className=''>
-            <Link to="/dashboard">
+            <Link to="/user-profile">
                 <h1 className='nav-name'>yummage</h1>
             </Link>
         </div>
@@ -26,6 +27,9 @@ function Dashnav({ handleLogout }) {
             </li>
             <li>
               <Link to="/recipes" className='navtext'>Explore</Link>
+            </li>
+            <li>
+              <Link to="/user-profile" className='navtext'>Dashboard</Link>
             </li>
             <li>
               <Link to="/login" className='navtext' onClick={logout}>Logout</Link>
