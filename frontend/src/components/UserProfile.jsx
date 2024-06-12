@@ -77,7 +77,7 @@ const UserProfile = () => {
             // Fetch updated recipes
             const userToken = localStorage.getItem('userToken');
             if (userToken) {
-              axios.get('http://localhost:3000/user/profile', {
+              axios.get('http://localhost:3000/user-profile', {
                 headers: { Authorization: `Bearer ${userToken}` }
               })
               .then(response => setRecipes(response.data.recipes))
