@@ -3,7 +3,7 @@ import { useState } from 'react';
 import axios from "axios";
 import { useNavigate, Link } from 'react-router-dom';
 
-const Login = ({ handleLogin }) => {
+const Login = ( handleLogin ) => {
   // State variables to hold username, password, and error message
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -64,7 +64,7 @@ const Login = ({ handleLogin }) => {
           name='email'  
           value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
-        <p className="yummage-p">Don't have an account? 
+        <p className="yummage-p">Don&apos;t have an account? 
         <Link to="/signup" className="signup-login"> Sign up
                 </Link></p>
         {/* Submit button */}

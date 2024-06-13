@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'tailwindcss/tailwind.css';
-import CRUDRecipe from './CRUDRecipe';
+import RecipeForm from './CRUDRecipe';
 
 const UserProfile = () => {
   const [recipes, setRecipes] = useState([]);

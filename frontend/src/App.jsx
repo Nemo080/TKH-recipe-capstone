@@ -1,6 +1,6 @@
 import './App.css';
 import './index.css';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Home from './components/Home.jsx'
 import Login from './components/Login.jsx'
@@ -8,7 +8,7 @@ import Recipes from './components/Recipes.jsx';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Recipe from './components/Recipe';
-import Dashnav from './components/Dashnav';
+import Dashnav from './components/Dashnav.jsx';
 import CRUDRecipe from './components/CRUDRecipe';
 import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';
@@ -37,20 +37,8 @@ function App() {
   return (
 
     //frontend routing
-    <BrowserRouter>
-      <Navbar />
-        <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/signup' element={<Signup/>}/>
-          <Route path='/recipes' element={<Recipes/>}/>
-          <Route path="/crud-recipe" element={<CRUDRecipe/>}/>
-          <Route path='/recipe/:name' element={<Recipe/>}/>
-        </Routes>
-    </BrowserRouter>
-
     <>
-    <div  className="page-container">
+    <div className="page-container">
        <div className="content-wrap">
       <BrowserRouter>
           <div className="App">
@@ -71,6 +59,7 @@ function App() {
             <Route path="/user-profile" element={isLoggedIn ? <UserProfile/> : <Navigate to="/login" />}/>
             <Route path="/recipes" element={isLoggedIn ? <Recipes /> : <Navigate to="/login" />} />
             <Route path="/crud-recipe" element={isLoggedIn ? <CRUDRecipe /> : <Navigate to="/login" />} />
+            <Route path='/recipe/:name' element={<Recipe/>}/>
           </Routes>
       </BrowserRouter>
       </div>

@@ -53,13 +53,14 @@ function Recipes(){
         });
         setFilteredRecipe(filteredRecipe);
     };
+
     console.log(filteredRecipe)
     return(
         <>
         <div>
         <select value={mealType} onChange={handleMealTypeChange} 
-        className="select select-warning w-full max-w-xs bg-orange-600">
-                    <option>Select a type of meal</option>
+        className="select select-warning w-full max-w-xs bg-orange-700">
+                    <option defaultValue=''>Select a type of meal</option>
                     <option value='breakfast'>Breakfast</option>
                     <option value='lunch'>Lunch</option>
                     <option value='snack'>Snack</option>
@@ -68,7 +69,8 @@ function Recipes(){
                 <br/>
                 <br/>
                 <button onClick={()=>(setFilteredRecipe(recipe))} 
-                className='btn glass bg-orange-600'>Reset</button>
+                className='btn glass bg-orange-700 px-5'>Reset</button>
+                <br/>
                 <ul>
                     {localRecipes &&
                     localRecipes.length >= 1 &&
@@ -85,7 +87,7 @@ function Recipes(){
         </div>
         <div className="recipe-card">
             <Splide options={{perPage: 3, gap: '4rem', pagination: false,}}>
-            {filteredRecipe ? filteredRecipe.map((item)=>(
+            {filteredRecipe && filteredRecipe.length >=1 ? filteredRecipe.map((item)=>(
                     <SplideSlide key={item.id}>
                     <div>
                         <p>{item.title}</p>
@@ -95,7 +97,7 @@ function Recipes(){
                         </Link>
                     </div>
                     </SplideSlide>
-            )): 'no recipe found'}
+            )): (<h2>No recipe found, select another query</h2>)}
             </Splide>
         </div>
         </>
