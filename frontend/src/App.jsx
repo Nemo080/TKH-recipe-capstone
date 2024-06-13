@@ -6,6 +6,7 @@ import Login from './components/Login.jsx'
 import Recipes from './components/Recipes.jsx';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
+import Recipe from './components/Recipe';
 
 import CRUDRecipe from './components/CRUDRecipe';
 
@@ -24,6 +25,7 @@ function App() {
           <Route path='/signup' element={<Signup/>}/>
           <Route path='/recipes' element={<Recipes/>}/>
           <Route path="/crud-recipe" element={<CRUDRecipe/>}/>
+          <Route path='/recipe/:name' element={<Recipe/>}/>
         </Routes>
     </BrowserRouter>
   )
