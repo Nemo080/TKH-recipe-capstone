@@ -2,7 +2,6 @@ import React from 'react'
 import { Link, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import App from '../App';
-import Dashboard from './Dashboard';
 import UserProfile from './UserProfile';
 
 function Dashnav({ handleLogout }) {
