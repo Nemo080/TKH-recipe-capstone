@@ -24,11 +24,11 @@ function Signup() {
   return (
     <>
       <div className="signup-container">
-        <h2 className="signup-header">Create your account</h2>
-        <div className="signup-content">
+        <h2 className="yummage-header">Create your account</h2>
+        <div>
             <form onSubmit={handleSubmit}>
-                <div className="mb-3">
-                    <label htmlFor="email" className="signup-label">
+                <div className="yummage-label">
+                    <label htmlFor="email" >
                         Name
                     </label>
                     <br></br>
@@ -36,12 +36,12 @@ function Signup() {
                     placeholder='Enter Name' 
                     autoComplete='off' 
                     name='email' 
-                    className='input'
+                    className='yummageinput'
                     onChange={(e) => setName(e.target.value)}
                     />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="email" className="signup-label">
+                <div className="yummage-label">
+                    <label htmlFor="email">
                         Email
                     </label>
                     <br></br>
@@ -49,28 +49,28 @@ function Signup() {
                     placeholder='Enter Email' 
                     autoComplete='off' 
                     name='email' 
-                    className='input' 
+                    className='yummageinput' 
                     onChange={(e) => setEmail(e.target.value)}
 
                     />
                 </div>
-                <div className="mb-3">
-                    <label htmlFor="email" className="signup-label">
+                <div className="yummage-label">
+                    <label htmlFor="email">
                         Password
                     </label>
                     <br></br>
                     <input type="password" 
                     placeholder='Enter Password' 
                     name='password' 
-                    className='input'
+                    className='yummageinput'
                     onChange={(e) => setPassword(e.target.value)}
                     />
                 </div>
-                <p className="signup-p">Already have an account?
+                <p className="yummage-p">Already have an account?
                 <Link to="/login" className="signup-login"> Log in
                 </Link></p>
-                    <button type="submit" className="signup-submit" >
-                    <Link to="http://localhost:3000/auth/signup" className="signup-submit">SIGN UP</Link>
+                    <button type="submit" >
+                    <Link to="http://localhost:3000/auth/signup" className="yummage-submit btn">SIGN UP</Link>
                     </button>
                 </form>
                 </div>
