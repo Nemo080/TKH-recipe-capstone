@@ -7,6 +7,7 @@ import Login from './components/Login.jsx'
 import Recipes from './components/Recipes.jsx';
 import Navbar from './components/Navbar';
 import Signup from './components/Signup';
+import Recipe from './components/Recipe';
 import Dashnav from './components/Dashnav';
 import CRUDRecipe from './components/CRUDRecipe';
 import Footer from './components/Footer';
@@ -34,6 +35,20 @@ function App() {
     localStorage.setItem('isLoggedIn', 'false');
   }
   return (
+
+    //frontend routing
+    <BrowserRouter>
+      <Navbar />
+        <Routes>
+          <Route path='/' element={<Home/>}/>
+          <Route path='/login' element={<Login/>}/>
+          <Route path='/signup' element={<Signup/>}/>
+          <Route path='/recipes' element={<Recipes/>}/>
+          <Route path="/crud-recipe" element={<CRUDRecipe/>}/>
+          <Route path='/recipe/:name' element={<Recipe/>}/>
+        </Routes>
+    </BrowserRouter>
+
     <>
     <div  className="page-container">
        <div className="content-wrap">
@@ -62,6 +77,7 @@ function App() {
       <Footer />
       </div>
     </>
+
   )
 }
 
