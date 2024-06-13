@@ -43,7 +43,7 @@ const Login = ( { handleLogin } ) => {
       {/* Form with input fields for email and password */}
       <form onSubmit={handleSubmit}>
         <div className="yummage-label">
-          <label>Email:</label>
+          <label>Email</label>
           {/* Input field for email */}
           <br></br>
           <input className='yummageinput' 
@@ -54,7 +54,7 @@ const Login = ( { handleLogin } ) => {
           value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className="yummage-label">
-          <label>Password:</label>
+          <label>Password</label>
           {/* Input field for password */}
           <br></br>
           <input className='yummageinput' 

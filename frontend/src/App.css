@@ -68,11 +68,17 @@ body{
     font-weight: bold;
     font-size: 18px;
 }
+
 .nav-drop{
     border: solid #7FB685 !important;
     font-size: 18px !important;
     border-width: 3px !important;
-    border-radius: 10px;
+    /* border-radius: 10px; */
+}
+
+.navdrop-menu{
+    background-color: #7FB685;
+    width: 200px;
 }
 
 .signup-container{
@@ -117,11 +123,11 @@ body{
 
 .yummage-header{
     text-align: center;
-    font-family: "Merriweather", serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 700;
     font-style: normal;
-    font-size: 36px;
-    padding-top: 2rem;
+    font-size: 30px;
+    padding-top: 3rem;
 }
 
 
@@ -158,7 +164,7 @@ body{
     margin-top: 1.5rem;
     padding-bottom: none;
 }
-.yummage-submit{
+.yummagesubmit{
     background-color: #7FB685 !important;
     width: 385px;
     height: 50px;
@@ -197,10 +203,10 @@ body{
     gap: 3rem;
 }
 .home-header{
-    font-size: 5rem;
+    font-size: 66px;
     justify-content: center;
     font-weight: 600;
-    font-family: "Merriweather", serif;
+    font-family: "Montserrat", sans-serif;
 }
 .home-h3{
     font-size: 40px;

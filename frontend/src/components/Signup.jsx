@@ -3,6 +3,8 @@ import "/src/index.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+
+
 function Signup({ handleLogin }) {
   const [name, setName] = useState();
   const [email, setEmail] = useState();
@@ -73,9 +75,8 @@ function Signup({ handleLogin }) {
               />
             </div>
             <p className="yummage-p">
-              Already have an account?
-              <Link to="/login" className="signup-login">
-                {" "}
+              Already have an account?&nbsp; 
+            <Link to="/login" className="signup-login">
                 Log in
               </Link>
             </p>

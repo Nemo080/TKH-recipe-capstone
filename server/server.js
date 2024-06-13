@@ -2,7 +2,8 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
-// import recipeRoutes from "./routes/recipes.js";
+import recipeRoutes from "./routes/recipes.js";
+import userRoutes from "./routes/users.js";
 
 dotenv.config()
 
@@ -19,7 +20,8 @@ app.use(cors())
 app.use(express.json())
 app.use(logger);
 app.use("/auth", authRoutes)
-// app.use('/recipe', recipeRoutes)
+app.use('/recipe', recipeRoutes)
+app.use('/users', userRoutes)
 
 // Example user profile and recipe data
 let userProfile = {

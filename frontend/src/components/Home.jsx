@@ -16,6 +16,7 @@ function Home() {
         <img src="/src/assets/froggy.gif" alt="gif of a cartoon frog stirring a pot"/>
         </div>
       </div>
+      
     </>
   )
 }

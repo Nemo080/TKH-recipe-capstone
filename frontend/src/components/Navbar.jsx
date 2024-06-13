@@ -10,11 +10,8 @@ export default function Navbar() {
             </Link>
         </div>
           <ul>
-          <li>
-              <Link to="/crud-recipe" className='navtext'>Create</Link>
-            </li>
             <li>
-              <Link to="/recipes" className='navtext'>Explore</Link>
+              <Link to="/" className='navtext'>Home</Link>
             </li>
              <li>
                 <Link to="/user-profile" className='navtext'>Dashboard</Link>
