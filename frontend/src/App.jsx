@@ -38,17 +38,6 @@ function App() {
 
     //frontend routing
     <BrowserRouter>
-      <Navbar />
-        <Routes>
-          <Route path='/' element={<Home/>}/>
-          <Route path='/login' element={<Login/>}/>
-          <Route path='/signup' element={<Signup/>}/>
-          <Route path='/recipes' element={<Recipes/>}/>
-          <Route path="/crud-recipe" element={<CRUDRecipe/>}/>
-          <Route path='/recipe/:name' element={<Recipe/>}/>
-        </Routes>
-    </BrowserRouter>
-
     <>
     <div  className="page-container">
        <div className="content-wrap">
