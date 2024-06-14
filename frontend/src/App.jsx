@@ -53,8 +53,9 @@ function App() {
     <>
     <div className="page-container">
        <div className="content-wrap">
+       <div className="App">
       <BrowserRouter>
-          {/* <div className="App">
+          {/* <div >
             {isLoggedIn ? (
               <>
                 <Dashnav handleLogout={handleLogout} />
@@ -82,6 +83,7 @@ function App() {
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
       </BrowserRouter>
+      </div>
       </div>
       <Footer />
       </div>
