@@ -31,7 +31,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-[#1C2530] min-h-screen p-8 text-black dark:text-white">
+    <div className="bg-white min-h-screen p-8 text-black dark:text-white">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold" style={{ fontFamily: 'Quicksand', color: '#FF7043' }}>Your Recipes</h1>
         <button onClick={() => handleModal('create')} className="btn btn-primary" style={{ backgroundColor: '#7FB685', fontFamily: 'Montserrat' }}>Create</button>
