@@ -16,8 +16,8 @@ body{
     height: 100%;
 }
 .App{
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
     display: flex;
     flex-direction: column;
 }
@@ -59,9 +59,9 @@ body{
     font-size: 18px;
 }
 
-.signup-button{
+/* .signup-button{
     padding-right: 1.5rem;
-}
+} */
 
 .navtext{
     color: black;
@@ -198,8 +198,8 @@ body{
     display: grid;
     grid-template-columns: auto auto;
     align-items: center;
-    margin-left: 4rem;
-    margin-right: 4rem;
+    /* margin-left: 4rem; */
+    /* margin-right: 4rem; */
     gap: 3rem;
     margin-top: 3rem;
 }
