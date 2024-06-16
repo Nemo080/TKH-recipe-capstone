@@ -1,179 +1,147 @@
-import { useState } from 'react';
-import axios from 'axios';
-import 'tailwindcss/tailwind.css';
-import 'daisyui/dist/full.css';
+import { useState, useEffect } from 'react'; // Importing useState and useEffect hooks from React
+import axios from 'axios'; // Importing axios for making HTTP requests
+import 'tailwindcss/tailwind.css'; // Importing Tailwind CSS for styling
+import 'daisyui/dist/full.css'; // Importing DaisyUI for additional styling
 
-const RecipeForm = () => {
-  const [id, setId] = useState('');
-  const [title, setTitle] = useState('');
-  const [ingredients, setIngredients] = useState('');
-  const [directions, setDirections] = useState('');
-  const [equipment, setEquipment] = useState('');
-  const [authorId, setAuthorId] = useState('');
-  const [modal, setModal] = useState('');
+// RecipeForm component definition
+const RecipeForm = ({ mode, recipe, closeModal, refreshRecipes }) => {
+  // Define state variables using useState hook
+  const [id, setId] = useState(''); // State for recipe ID
+  const [title, setTitle] = useState(''); // State for recipe title
+  const [ingredients, setIngredients] = useState(''); // State for recipe ingredients
+  const [directions, setDirections] = useState(''); // State for recipe directions
+  const [equipment, setEquipment] = useState(''); // State for recipe equipment
+  const [message, setMessage] = useState(''); // State for feedback message
 
-  const handleCreate = async (e) => {
-    e.preventDefault();
+  // useEffect hook to populate form fields when editing a recipe
+  useEffect(() => {
+    if (recipe) {
+      console.log("Setting recipe ID:", recipe.id); // Debug: Log recipe ID
+      setId(recipe.id);
+      setTitle(recipe.title);
+      setIngredients(recipe.ingredients);
+      setDirections(recipe.instructions);
+      setEquipment(recipe.equipment);
+    }
+  }, [recipe]);
+
+  // Function to handle creating a new recipe
+  const handleCreate = async () => {
     try {
-      const response = await axios.post('http://localhost:3000/recipes/new-recipe', {
+      const formData = {
         title,
         ingredients,
-        instructions: directions,
         equipment,
-        authorId
-      });
+        instructions: directions,
+      };
 
-      console.log(response.data);
-      setTitle('');
-      setIngredients('');
-      setDirections('');
-      setEquipment('');
-      setAuthorId('');
-      setModal('');
-    } catch (err) {
-      console.error('Error response:', err.response);
+      console.log("Creating recipe with data:", formData); // Debug: Log form data
+      const response = await axios.post('http://localhost:3000/user-profile', formData);
+      if (response.status === 201) {
+        refreshRecipes();
+        closeModal();
+      }
+    } catch (error) {
+      console.error('Error creating recipe:', error.response);
+      setMessage('Failed to create recipe');
     }
   };
 
-  const handleUpdate = async (e) => {
-    e.preventDefault();
+  // Function to handle updating an existing recipe
+  const handleUpdate = async () => {
     try {
-      const response = await axios.put(`http://localhost:3000/recipes/${id}`, {
+      const formData = {
         title,
         ingredients,
-        instructions: directions,
         equipment,
-        authorId
-      });
+        instructions: directions,
+      };
 
-      console.log(response.data);
-      setId('');
-      setTitle('');
-      setIngredients('');
-      setDirections('');
-      setEquipment('');
-      setAuthorId('');
-      setModal('');
-    } catch (err) {
-      console.error('Error response:', err.response);
+      console.log("Updating recipe with ID:", id); // Debug: Log recipe ID
+      console.log("Updating recipe with data:", formData); // Debug: Log form data
+      const response = await axios.put(`http://localhost:3000/user-profile/${id}`, formData);
+      if (response.status === 200) {
+        setMessage('Recipe updated successfully!');
+        refreshRecipes();
+        closeModal();
+      }
+    } catch (error) {
+      console.error('Error updating recipe:', error.response);
+      setMessage('Failed to update recipe');
     }
   };
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
+  // Function to handle deleting an existing recipe
+  const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://localhost:3000/recipes/${id}`);
-      console.log(response.data);
-      setId('');
-      setModal('');
-    } catch (err) {
-      console.error('Error response:', err.response);
+      console.log("Deleting recipe with ID:", id); // Debug: Log recipe ID
+      const response = await axios.delete(`http://localhost:3000/user-profile/${id}`);
+      if (response.status === 200) {
+        setMessage('Recipe deleted successfully!');
+        refreshRecipes();
+        closeModal();
+      }
+    } catch (error) {
+      console.error('Error deleting recipe:', error.response);
+      setMessage('Failed to delete recipe');
     }
   };
 
-  const inputClass = "input input-bordered input-green text-black placeholder-opacity-30";
+  // Function to handle form submission based on mode
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (mode === 'create') {
+      handleCreate();
+    } else if (mode === 'update') {
+      handleUpdate();
+    } else if (mode === 'delete') {
+      handleDelete();
+    }
+  };
 
+  const inputClass = "input input-bordered input-green text-black placeholder-opacity-30"; // Class for input styling
+
+  // JSX to render the form
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold mb-4" style={{ fontFamily: 'Quicksand', color: '#FF7043' }}>Recipe Form</h2>
-      <div className="flex space-x-4 mb-4">
-        <button className="btn btn-primary" style={{ backgroundColor: '#7FB685', fontFamily: 'Montserrat' }} onClick={() => setModal('create')}>Create Recipe</button>
-        <button className="btn btn-secondary" style={{ backgroundColor: '#7FB685', fontFamily: 'Montserrat' }} onClick={() => setModal('update')}>Update Recipe</button>
-        <button className="btn btn-error" style={{ backgroundColor: '#7FB685', fontFamily: 'Montserrat' }} onClick={() => setModal('delete')}>Delete Recipe</button>
+    <div className="modal modal-open">
+      <div className="modal-box" style={{ fontFamily: 'Quicksand' }}>
+        <h3 className="font-bold text-lg">{mode.charAt(0).toUpperCase() + mode.slice(1)} Recipe</h3>
+        <form onSubmit={handleSubmit}>
+          {mode !== 'delete' && (
+            <div className="form-control">
+              <label className="label">Title:</label>
+              <input type="text" className={inputClass} value={title} onChange={(e) => setTitle(e.target.value)} required />
+            </div>
+          )}
+          {mode !== 'delete' && (
+            <>
+              <div className="form-control">
+                <label className="label">Ingredients:</label>
+                <textarea className={inputClass} value={ingredients} onChange={(e) => setIngredients(e.target.value)} required />
+              </div>
+              <div className="form-control">
+                <label className="label">Equipment:</label>
+                <textarea className={inputClass} value={equipment} onChange={(e) => setEquipment(e.target.value)} required />
+              </div>
+              <div className="form-control">
+                <label className="label">Directions:</label>
+                <textarea className={inputClass} value={directions} onChange={(e) => setDirections(e.target.value)} required />
+              </div>
+            </>
+          )}
+          <div className="modal-action">
+            <button type="submit" className={`btn ${mode === 'delete' ? 'btn-error' : 'btn-primary'}`} style={{ backgroundColor: '#7FB685' }}>
+              {mode === 'delete' ? 'Delete' : 'Save'}
+            </button>
+            <button type="button" className="btn" onClick={closeModal}>Cancel</button>
+          </div>
+        </form>
+        {message && (
+          <div className="alert alert-success mt-4">
+            {message}
+          </div>
+        )}
       </div>
-
-      {/* Create Recipe Modal */}
-      {modal === 'create' && (
-        <div className="modal modal-open">
-          <div className="modal-box" style={{ fontFamily: 'Quicksand' }}>
-            <h3 className="font-bold text-lg">Create Recipe</h3>
-            <form onSubmit={handleCreate}>
-              <div className="form-control">
-                <label className="label">Title:</label>
-                <input type="text" className={inputClass} value={title} onChange={(e) => setTitle(e.target.value)} required />
-              </div>
-              <div className="form-control">
-                <label className="label">Ingredients:</label>
-                <textarea className={inputClass} value={ingredients} onChange={(e) => setIngredients(e.target.value)} required />
-              </div>
-              <div className="form-control">
-                <label className="label">Equipment:</label>
-                <textarea className={inputClass} value={equipment} onChange={(e) => setEquipment(e.target.value)} required />
-              </div>
-              <div className="form-control">
-                <label className="label">Directions:</label>
-                <textarea className={inputClass} value={directions} onChange={(e) => setDirections(e.target.value)} required />
-              </div>
-              <div className="form-control">
-                <label className="label">Author ID:</label>
-                <input type="text" className={inputClass} value={authorId} onChange={(e) => setAuthorId(e.target.value)} required />
-              </div>
-              <div className="modal-action">
-                <button type="submit" className="btn btn-primary" style={{ backgroundColor: '#7FB685' }}>Save</button>
-                <button type="button" className="btn" onClick={() => setModal('')}>Cancel</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* Update Recipe Modal */}
-      {modal === 'update' && (
-        <div className="modal modal-open">
-          <div className="modal-box" style={{ fontFamily: 'Quicksand' }}>
-            <h3 className="font-bold text-lg">Update Recipe</h3>
-            <form onSubmit={handleUpdate}>
-              <div className="form-control">
-                <label className="label">Recipe ID:</label>
-                <input type="text" className={inputClass} value={id} onChange={(e) => setId(e.target.value)} required />
-              </div>
-              <div className="form-control">
-                <label className="label">Title:</label>
-                <input type="text" className={inputClass} value={title} onChange={(e) => setTitle(e.target.value)} required />
-              </div>
-              <div className="form-control">
-                <label className="label">Ingredients:</label>
-                <textarea className={inputClass} value={ingredients} onChange={(e) => setIngredients(e.target.value)} required />
-              </div>
-              <div className="form-control">
-                <label className="label">Equipment:</label>
-                <textarea className={inputClass} value={equipment} onChange={(e) => setEquipment(e.target.value)} required />
-              </div>
-              <div className="form-control">
-                <label className="label">Directions:</label>
-                <textarea className={inputClass} value={directions} onChange={(e) => setDirections(e.target.value)} required />
-              </div>
-              <div className="form-control">
-                <label className="label">Author ID:</label>
-                <input type="text" className={inputClass} value={authorId} onChange={(e) => setAuthorId(e.target.value)} required />
-              </div>
-              <div className="modal-action">
-                <button type="submit" className="btn btn-primary" style={{ backgroundColor: '#7FB685' }}>Update</button>
-                <button type="button" className="btn" onClick={() => setModal('')}>Cancel</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
-
-      {/* Delete Recipe Modal */}
-      {modal === 'delete' && (
-        <div className="modal modal-open">
-          <div className="modal-box" style={{ fontFamily: 'Quicksand' }}>
-            <h3 className="font-bold text-lg">Delete Recipe</h3>
-            <form onSubmit={handleDelete}>
-              <div className="form-control">
-                <label className="label">Recipe ID:</label>
-                <input type="text" className={inputClass} value={id} onChange={(e) => setId(e.target.value)} required />
-              </div>
-              <div className="modal-action">
-                <button type="submit" className="btn btn-error" style={{ backgroundColor: '#7FB685' }}>Delete</button>
-                <button type="button" className="btn" onClick={() => setModal('')}>Cancel</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   );
 };
