@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import RecipeForm from './CRUDRecipe'; // Adjust path as necessary
+import 'tailwindcss/tailwind.css';
+
 
 const UserProfile = () => {
   const [recipes, setRecipes] = useState([]);
@@ -47,7 +49,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="bg-white dark:bg-[#1C2530] min-h-screen p-8 text-black dark:text-white">
+    <div className="bg-white min-h-screen p-8 text-black dark:text-white">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold" style={{ fontFamily: 'Quicksand', color: '#FF7043' }}>Your Recipes</h1>
         <h1 className="text-2xl font-bold" style={{ fontFamily: 'Quicksand', color: '#FF7043' }}>Recipe Form</h1>

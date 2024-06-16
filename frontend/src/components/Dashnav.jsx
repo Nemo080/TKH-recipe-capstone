@@ -4,7 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import App from '../App';
 import UserProfile from './UserProfile';
 
-function Dashnav({ handleLogout }) {
+
+
+function Dashnav( handleLogout ) {
 
     const navigate = useNavigate();
 
