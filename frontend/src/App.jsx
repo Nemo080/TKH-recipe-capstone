@@ -15,7 +15,7 @@ import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';
 import Logout from './components/Logout';
 import Layout from './components/Layout';
-import AppLayout from './components/AppLayout';
+import AppLayout from './components/Applayout';
 
 
 function App() {
