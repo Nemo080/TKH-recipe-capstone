@@ -6,7 +6,6 @@ export default function (passport){
 
 
 router.get("/me", passport.authenticate("jwt", {session:false}), async function (req, res){
-    console.log(req.user)
     const userId = req.user?.id;
 
     if (!userId) {

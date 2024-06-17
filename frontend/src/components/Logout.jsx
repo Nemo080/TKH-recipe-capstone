@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
-import App from '../App';
 
 const Logout = ({ handleLogout }) => {
   useEffect(() => {

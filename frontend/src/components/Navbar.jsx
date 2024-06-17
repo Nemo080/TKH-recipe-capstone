@@ -13,9 +13,6 @@ export default function Navbar() {
             <li>
               <Link to="/" className='navtext'>Home</Link>
             </li>
-             <li>
-                <Link to="/user-profile" className='navtext'>Dashboard</Link>
-            </li>
             <li>
               <Link to="/login" className='navtext'>Login</Link>
             </li>

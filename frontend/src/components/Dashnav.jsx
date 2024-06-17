@@ -1,11 +1,6 @@
 import React from "react";
 import { Link, Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import App from "../App";
-import Dashboard from "./Dashboard";
-import Logout from "./Logout";
-import AppLayout from "./Applayout";
-import UserProfile from './UserProfile';
 
 function Dashnav({ handleLogout, user }) {
   const navigate = useNavigate();
@@ -18,13 +13,13 @@ function Dashnav({ handleLogout, user }) {
   return (
     <nav className="navbar">
       <div className="">
-        <Link to="/app/dashboard">
+        <Link to="/app/user-profile">
           <h1 className="nav-name">yummage</h1>
         </Link>
       </div>
       <ul>
         <li>
-          <Link to="/app/dashboard" className="navtext">
+          <Link to="/app//user-profile" className="navtext">
             Dashboard
           </Link>
         </li>

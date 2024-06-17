@@ -16,16 +16,13 @@ function Signup({ handleLogin }) {
     axios
       .post("http://localhost:3000/auth/signup", { name, email, password })
       .then((result) => {
-        console.log(result);
         const userToken = "userToken";
         localStorage.setItem(userToken, result.data.token);
         const token = localStorage.getItem(userToken);
         if (token) {
-          console.log("token collected");
           handleLogin();
           navigate("/app/user-profile");
         } else {
-          console.log("token not collected");
           setError("Failed to store token.");
         }
       })

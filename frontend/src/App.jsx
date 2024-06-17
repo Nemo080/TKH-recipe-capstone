@@ -2,7 +2,6 @@ import './App.css';
 import './index.css';
 import { useState, useEffect } from 'react';
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
-
 import Home from './components/Home.jsx'
 import Login from './components/Login.jsx'
 import Recipes from './components/Recipes.jsx';
@@ -16,7 +15,6 @@ import UserProfile from './components/UserProfile';
 import Logout from './components/Logout';
 import Layout from './components/Layout';
 import AppLayout from './components/Applayout';
-
 
 function App() {
 
@@ -39,7 +37,6 @@ function App() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     localStorage.setItem('isLoggedIn', 'false');
-    window.location.href = '/login';
   }
 
   if (loading) {
@@ -55,17 +52,6 @@ function App() {
        <div className="content-wrap">
        <div className="App">
       <BrowserRouter>
-          {/* <div >
-            {isLoggedIn ? (
-              <>
-                <Dashnav handleLogout={handleLogout} />
-              </>
-            ) : (
-              <>
-                <Navbar handleLogin={handleLogin}/>
-              </>
-            )}
-          </div> */}
           <Routes>
             <Route path="/" element={<Layout/>}>
             <Route path='/' element={<Home/>}/>
