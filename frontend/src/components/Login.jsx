@@ -23,7 +23,7 @@ const Login = ( { handleLogin } ) => {
       if (token) {
         console.log("token collected")
         handleLogin();
-        navigate("/user-profile")
+        navigate("/app/user-profile")
       }
       else{
         console.log("token not collected")
@@ -43,7 +43,7 @@ const Login = ( { handleLogin } ) => {
       {/* Form with input fields for email and password */}
       <form onSubmit={handleSubmit}>
         <div className="yummage-label">
-          <label>Email:</label>
+          <label>Email</label>
           {/* Input field for email */}
           <br></br>
           <input className='yummageinput' 
@@ -54,7 +54,7 @@ const Login = ( { handleLogin } ) => {
           value={email} onChange={(e) => setEmail(e.target.value)} />
         </div>
         <div className="yummage-label">
-          <label>Password:</label>
+          <label>Password</label>
           {/* Input field for password */}
           <br></br>
           <input className='yummageinput' 
@@ -68,7 +68,7 @@ const Login = ( { handleLogin } ) => {
         <Link to="/signup" className="signup-login"> Sign up
                 </Link></p>
         {/* Submit button */}
-        <button type="submit"  className="yummage-submit btn">Login</button>
+        <button type="submit"  className="yummagesubmit btn">Login</button>
       </form>
       </div>
     </div>
