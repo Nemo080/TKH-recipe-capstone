@@ -70,11 +70,10 @@ function App() {
             <Route path="/" element={<Layout/>}>
             <Route path='/' element={<Home/>}/>
             <Route path='/login' element={<Login handleLogin={handleLogin}/>}/>
-            <Route path="/user-profile" element={isLoggedIn ? <UserProfile/> : <Navigate to="/login" />}/>
             <Route path='/signup' element={<Signup handleLogin={handleLogin}/>}/>
             </Route>
             <Route path="/" element={<AppLayout handleLogout={handleLogout}/>}>
-            <Route path='/app/dashboard' element={<Dashboard />}/>
+            <Route path="/app/user-profile" element={isLoggedIn ? <UserProfile/> : <Navigate to="/login" />}/>
             <Route path="/app/recipes" element={isLoggedIn ? <Recipes /> : <Navigate to="/login" />} />
             <Route path="/app/crud-recipe" element={isLoggedIn ? <CRUDRecipe /> : <Navigate to="/login" />} />
             <Route path="/app/logout" element={<Logout handleLogout={handleLogout} />} />
