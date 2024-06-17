@@ -23,7 +23,7 @@ function Signup({ handleLogin }) {
         if (token) {
           console.log("token collected");
           handleLogin();
-          navigate("/dashboard");
+          navigate("/app/dashboard");
         } else {
           console.log("token not collected");
           setError("Failed to store token.");

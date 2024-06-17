@@ -40,12 +40,10 @@ router.post("/signup", async (request, response) => {
         if (newUser) {
           const token = jwt.sign(
             {
-              email: {
                 email: foundUser.email,
                 id: foundUser.id,
-              },
             },
-            "thisIsASuperSecretKey"
+            process.env.SECRET_KEY
           );
   
           response.status(201).json({
@@ -94,12 +92,12 @@ router.post("/login", async (request, response) => {
       if (verifiedPassword) {
         const token = jwt.sign(
           {
-            email: {
+          
               email: foundUser.email,
               id: foundUser.id,
-            },
+          
           },
-          "thisIsASuperSecretKey"
+          process.env.SECRET_KEY
         );
 
         response.status(200).json({

@@ -1,28 +1,29 @@
-import { Outlet } from 'react-router-dom'
-import Dashnav from './Dashnav'
-import axios from 'axios'
-import {useEffect} from 'react'
+import { Outlet } from "react-router-dom";
+import Dashnav from "./Dashnav";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 function AppLayout({handleLogout}) {
+    const [user, setUser]= useState(null)
     useEffect (()=>{
         async function getUser () {
             const token= localStorage.getItem('userToken')
-            const user = await axios.get("http://localhost:3000/users/me", {
+            const response = await axios.get("http://localhost:3000/users/me", {
                 headers:{
                     Authorization:`Bearer ${token}`
                 }
             })
-            console.log(user)
+            setUser(response.data)
         }
         getUser()
     },[])
 
   return (
     <>
-     <Dashnav handleLogout={handleLogout}/>
+     <Dashnav handleLogout={handleLogout} user={user}/>
      <Outlet />
     </>
   )
 }
 
-export default AppLayout
+export default AppLayout;

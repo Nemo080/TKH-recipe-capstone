@@ -4,6 +4,9 @@ import cors from "cors";
 import authRoutes from "./routes/auth.js";
 import recipeRoutes from "./routes/recipes.js";
 import userRoutes from "./routes/users.js";
+import passport from "passport"; 
+import session from 'express-session';
+import passportjwt from "./middleware/authMiddleware.js"
 
 dotenv.config()
 
@@ -16,12 +19,20 @@ const logger = (req, _res, next) => {
     next();
 };
 app.use(cors())
-// app.use(bodyParser.json());
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+})); 
+app.use(passport.initialize());
+app.use(passport.session());
+passportjwt(passport);
 app.use(express.json())
 app.use(logger);
 app.use("/auth", authRoutes)
 app.use('/recipe', recipeRoutes)
-app.use('/users', userRoutes)
+app.use('/users', userRoutes(passport))
 
 // Example user profile and recipe data
 let userProfile = {

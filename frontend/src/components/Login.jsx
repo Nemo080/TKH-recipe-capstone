@@ -23,7 +23,7 @@ const Login = ( { handleLogin } ) => {
       if (token) {
         console.log("token collected")
         handleLogin();
-        navigate("/user-profile")
+        navigate("/app/user-profile")
       }
       else{
         console.log("token not collected")

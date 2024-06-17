@@ -1,11 +1,12 @@
 import express from 'express';
 import prisma from '../db/index.js';
 
-const router = express.Router();
+export default function (passport){
+    const router = express.Router();
 
-import { checkIfAuthenticated } from '../middleware/authMiddleware.js';
 
-router.get("/me", checkIfAuthenticated, async function (req, res){
+router.get("/me", passport.authenticate("jwt", {session:false}), async function (req, res){
+    console.log(req.user)
     const userId = req.user?.id;
 
     if (!userId) {
@@ -30,5 +31,5 @@ router.get("/me", checkIfAuthenticated, async function (req, res){
       await prisma.$disconnect();
     }
 });
-  
-export default router;
+return router
+}
