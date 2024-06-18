@@ -32,7 +32,7 @@ passportjwt(passport);
 app.use(express.json())
 app.use(logger);
 app.use("/auth", authRoutes)
-app.use('/recipe', recipeRoutes)
+app.use('/recipe', recipeRoutes(passport))
 app.use('/users', userRoutes(passport))
 
 
