@@ -63,7 +63,7 @@ function App() {
             <Route path="/app/recipes" element={isLoggedIn ? <Recipes /> : <Navigate to="/login" />} />
             <Route path="/app/crud-recipe" element={isLoggedIn ? <CRUDRecipe /> : <Navigate to="/login" />} />
             <Route path="/app/logout" element={<Logout handleLogout={handleLogout} />} />
-            <Route path='/app/recipe/:name' element={<Recipe/>}/>
+            <Route path='/app/recipe/:id' element={<Recipe/>}/>
             </Route>
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
