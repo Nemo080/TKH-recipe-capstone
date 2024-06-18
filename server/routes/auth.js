@@ -38,10 +38,19 @@ router.post("/signup", async (request, response) => {
 
         //If the new user data is returned
         if (newUser) {
-          //Send back a status of "Created"
+          const token = jwt.sign(
+            {
+                email: foundUser.email,
+                id: foundUser.id,
+            },
+            process.env.SECRET_KEY
+          );
+  
           response.status(201).json({
             success: true,
+            token,
           });
+          //Send back a status of "Created"
         } else {
           console.log("Here")
           response.status(500).json({
@@ -83,12 +92,12 @@ router.post("/login", async (request, response) => {
       if (verifiedPassword) {
         const token = jwt.sign(
           {
-            email: {
+          
               email: foundUser.email,
               id: foundUser.id,
-            },
+          
           },
-          "thisIsASuperSecretKey"
+          process.env.SECRET_KEY
         );
 
         response.status(200).json({
