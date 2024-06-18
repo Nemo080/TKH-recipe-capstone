@@ -2,11 +2,12 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import authRoutes from "./routes/auth.js";
-import recipeRoutes from "./routes/recipes.js";
+import recipeRoutes from "./routes/recipe.js";
 import userRoutes from "./routes/users.js";
 import passport from "passport"; 
 import session from 'express-session';
 import passportjwt from "./middleware/authMiddleware.js"
+
 
 dotenv.config()
 
@@ -33,6 +34,7 @@ app.use(logger);
 app.use("/auth", authRoutes)
 app.use('/recipe', recipeRoutes)
 app.use('/users', userRoutes(passport))
+
 
 // Example user profile and recipe data
 let userProfile = {
