@@ -37,7 +37,7 @@ function Recipes(){
         const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${import.meta.env.VITE_API_KEY}&number=9`)
         const data = await api.json();
         localStorage.setItem('recipes', JSON.stringify(data.recipes));
-        // setRecipe(data.recipes);
+        setRecipe(data.recipes);
         console.log(data.recipes);
         return data.recipes 
        }
@@ -60,7 +60,7 @@ function Recipes(){
         <div>
         <select value={mealType} onChange={handleMealTypeChange} 
         className="select select-warning w-full max-w-xs bg-orange-700">
-                    <option defaultValue=''>Select a type of meal</option>
+                    <option defaultValue='' selected>Select a type of meal</option>
                     <option value='breakfast'>Breakfast</option>
                     <option value='lunch'>Lunch</option>
                     <option value='snack'>Snack</option>
@@ -91,7 +91,7 @@ function Recipes(){
                     <SplideSlide key={item.id}>
                     <div>
                         <p>{item.title}</p>
-                        <Link to={'/recipe/' + recipe.id}>
+                        <Link to={'/app/recipe/' + item.id}>
                         <img className="recipe-image" 
                         src={item.image} alt={item.title}/>
                         </Link>
