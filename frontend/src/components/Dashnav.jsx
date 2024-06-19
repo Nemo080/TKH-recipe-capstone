@@ -19,7 +19,7 @@ function Dashnav({ handleLogout, user }) {
       </div>
       <ul>
         <li>
-          <Link to="/app//user-profile" className="navtext">
+          <Link to="/app/user-profile" className="navtext">
             Dashboard
           </Link>
         </li>
