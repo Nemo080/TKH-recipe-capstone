@@ -48,7 +48,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen p-8 text-black dark:text-white">
+    <div className="bg-white min-h-screen p-8 text-black">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold" style={{ fontFamily: 'Quicksand', color: '#FF7043' }}>Your Recipes</h1>
         <h1 className="text-2xl font-bold" style={{ fontFamily: 'Quicksand', color: '#FF7043' }}>Recipe Form</h1>
