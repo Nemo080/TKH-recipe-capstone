@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import RecipeForm from './CRUDRecipe'; // Adjust path as necessary
-import 'tailwindcss/tailwind.css';
 
 
 const UserProfile = () => {
@@ -15,7 +14,7 @@ const UserProfile = () => {
       try {
         const userToken = localStorage.getItem('userToken');
         if (userToken) {
-          const response = await axios.get('http://localhost:3000/user-profile', {
+          const response = await axios.get('http://localhost:3000/users/user-profile', {
             headers: { Authorization: `Bearer ${userToken}` }
           });
           setUser(response.data.user);
@@ -38,7 +37,7 @@ const UserProfile = () => {
     try {
       const userToken = localStorage.getItem('userToken');
       if (userToken) {
-        const response = await axios.get('http://localhost:3000/user-profile', {
+        const response = await axios.get('http://localhost:3000/users/user-profile', {
           headers: { Authorization: `Bearer ${userToken}` }
         });
         setRecipes(response.data.recipes);
