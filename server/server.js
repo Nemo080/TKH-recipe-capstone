@@ -36,45 +36,6 @@ app.use('/recipe', recipeRoutes(passport))
 app.use('/users', userRoutes(passport))
 
 
-// Example user profile and recipe data
-let userProfile = {
-  user: { name: 'User Name', pronouns: 'Pronouns' },
-  recipes: []
-};
-
-// Fetch user profile
-app.get('/user-profile', (req, res) => {
-  res.json(userProfile);
-});
-
-// Create a new recipe
-app.post('/user-profile', (req, res) => {
-  const newRecipe = req.body;
-  newRecipe.id = userProfile.recipes.length + 1; // Generate a new ID
-  userProfile.recipes.push(newRecipe);
-  res.status(201).json(newRecipe);
-});
-
-// Update an existing recipe
-app.put('/user-profile/:id', (req, res) => {
-  const recipeId = parseInt(req.params.id, 10);
-  const updatedRecipe = req.body;
-  const recipeIndex = userProfile.recipes.findIndex((r) => r.id === recipeId);
-  if (recipeIndex !== -1) {
-    userProfile.recipes[recipeIndex] = { id: recipeId, ...updatedRecipe };
-    res.status(200).json(userProfile.recipes[recipeIndex]);
-  } else {
-    res.status(404).json({ error: 'Recipe not found' });
-  }
-});
-
-// Delete an existing recipe
-app.delete('/user-profile/:id', (req, res) => {
-  const recipeId = parseInt(req.params.id, 10);
-  userProfile.recipes = userProfile.recipes.filter((r) => r.id !== recipeId);
-  res.status(200).json({ message: 'Recipe deleted successfully' });
-});
-
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
