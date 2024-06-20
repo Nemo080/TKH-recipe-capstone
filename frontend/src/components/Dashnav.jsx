@@ -40,11 +40,11 @@ function Dashnav({ handleLogout, user }) {
            {user ? user.name : ""}
           </summary>
           <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box w-55 text-base font-medium navdrop-menu">
-            <li>
-              <Link to="/app/dashboard">Your Recipes</Link>
+          <li>
+              <Link to="/app/user-profile">Your Recipes</Link>
             </li>
             <li>
-              <Link to="/app/dashboard" onClick={logout}>
+              <Link to="/app/" onClick={logout}>
                 Logout
               </Link>
             </li>

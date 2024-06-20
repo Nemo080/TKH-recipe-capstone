@@ -25,10 +25,10 @@ const Login = ( { handleLogin } ) => {
         navigate("/app/user-profile")
       }
       else{
-        setError('Failed to store token.');
+        throw new Error("Failed to store token.");
       }
     })
-    .catch(err => console.log(err))
+    .catch((err) => console.error(err));
   };
 
   return (
