@@ -72,7 +72,7 @@ router.post('/user-profile', passport.authenticate('jwt', { session: false }), a
         ingredients,
         equipment,
         instructions,
-        userId,
+        authorId:userId,
       },
     });
 
@@ -96,7 +96,7 @@ router.put('/user-profile/:id', passport.authenticate('jwt', { session: false })
 
   try {
     const updatedRecipe = await prisma.recipe.update({
-      where: { id: parseInt(id, 10) },
+      where: { id },
       data: {
         title,
         ingredients,
@@ -124,7 +124,7 @@ router.delete('/user-profile/:id', passport.authenticate('jwt', { session: false
 
   try {
     await prisma.recipe.delete({
-      where: { id: parseInt(id, 10) },
+      where: { id },
     });
 
     return res.status(200).json({
