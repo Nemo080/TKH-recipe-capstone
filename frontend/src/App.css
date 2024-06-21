@@ -78,7 +78,8 @@ body{
 
 .navdrop-menu{
     background-color: #7FB685;
-    width: 200px;
+    width: 150px;
+    font-size: 18px;
 }
 
 .signup-container{
@@ -246,56 +247,73 @@ body{
 
 /* src/styles.css */
 .recipe-container {
-    height: 500px;
+    /* height: 200px; */
     border: solid;
     border-width: 4px;
     border-color: #7FB685;
     border-radius: 10px;
     margin: 0 auto;
+    margin-bottom: 30px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-  }
+    /* background-color: rgba(127, 182, 133, 0.25); */
+    border: 4px solid #7FB685;
+    border-radius: 8px;
+    padding: 16px;
+    height: 100%; /* Adjust height as needed */
+    width: 100%;
+}
   
-  .recipe-content {
+.recipe-content {
     padding: 20px;
-  }
-  
-  .recipe-content img {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensure content fills the container */
+    flex: 1;
+}
+.button-container {
+    margin-top: auto; /* Push buttons to the bottom */
+}
+
+.recipe-content img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px;
-  }
-  
-  .user-profile-card-container {
+}
+
+.user-profile-card-container {
     width: 20%;
     margin-right: 2%;
-  }
-  
-  .user-profile-card {
-    border: solid;
-    border-width: 4px;
+}
+
+.user-profile-card {
+    border:double;
+    border-width: 6px;
     border-color: #7FB685;
     border-radius: 10px;
     /*box-shadow: 10px 10px 20px 5px #7FB685;*/
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    /* justify-content: center; */
     text-align: center;
     width: 100%;
-  }
-  
-  .recipe-grid-container {
+    /* height: 500px; */
+    background-color: rgba(127, 182, 133, 0.25);
+}
+
+.recipe-grid-container {
     width: 78%;
-  }
-  
+    /* display:grid */
+}
+
 
 @media (max-width: 768px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: auto auto auto;
   }
 }
 
