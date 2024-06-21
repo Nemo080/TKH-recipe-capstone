@@ -29,20 +29,20 @@ export default function (passport) {
           ingredients,
           equipment,
           instructions,
-          authorId:request.user.id,
+          authorId: request.user.id,
         },
       });
-      if(newRecipe){
+      if (newRecipe) {
         response.status(201).json({
           success: true,
           recipe: newRecipe.id
         })
-      } else{
+      } else {
         return response.status(500).json({
-        success: false,
-        message: 'Something went wrong',
-        error: error.message,
-      });
+          success: false,
+          message: 'Something went wrong',
+          error: error.message,
+        });
 
       }
     } catch (error) {
@@ -56,7 +56,7 @@ export default function (passport) {
   })
 
   // Update a recipe
-  router.put('/recipes/:id',  passport.authenticate('jwt', { session: false }), async (request, response) => {
+  router.put('/recipes/:id', passport.authenticate('jwt', { session: false }), async (request, response) => {
     console.log('Received request:', request.body);
 
     try {
@@ -82,9 +82,8 @@ export default function (passport) {
     }
   })
 
-
   // Delete a recipe
-  router.delete('/recipes/:id',  passport.authenticate('jwt', { session: false }), async (request, response) => {
+  router.delete('/recipes/:id', passport.authenticate('jwt', { session: false }), async (request, response) => {
     console.log('Received request:', request.body);
 
     try {
@@ -103,8 +102,6 @@ export default function (passport) {
       });
     }
   })
-
-
 
   // Get route to retrieve all recipes
   router.get('/recipes', async (req, res) => {
