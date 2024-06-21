@@ -73,36 +73,26 @@ function Recipes() {
                     className='btn glass px-5'>Reset</button>
                 <br />
             </div>
-            <div className="rounded-3xl overflow-hidden grid grid-cols-3 gap-y-2 gap-2">
-                {filteredRecipe && filteredRecipe.length >= 1 ? filteredRecipe.map((item) => (
-                    <div key={item.id}>
-                        <p>{item.title}</p>
-                        <Link to={'/app/recipe/' + item.id}>
-                            <img className="rounded-3xl"
-                                src={item.image} alt={item.title}/>
-                        </Link>
-                    </div>
-                )) : (<h2>No recipe found, select another query</h2>)}
-            </div>
-            
             <div className="rounded-3xl overflow-hidden grid grid-cols-3 gap-y-2">
-                {filteredRecipe && filteredRecipe.length >= 1 && filteredRecipe.map((recipe) => (
-                    <div className="card w-96 bg-base-100 shadow-xl" key={recipe.id}>
-                        <figure><img src={recipe.image} alt={recipe.image}/></figure>
-                        <div className="card-body">
-                            <h2 className="card-title">
-                                {recipe.title}
-                                {recipe.isUserMade ?
-                                    <div className="badge badge-secondary">User</div> :
-                                    <div className="badge badge-primary">Spoonacular</div>}
+                {filteredRecipe && filteredRecipe.length >= 1 ? filteredRecipe.map((recipe) => (
+                    <Link to={'/app/recipe/' + recipe.id}>
+                        <div className="card w-96 bg-base-100 shadow-xl" key={recipe.id}>
+                            <figure><img src={recipe.image} alt={recipe.image} /></figure>
+                            <div className="card-body">
+                                <h2 className="card-title">
+                                    {recipe.title}
+                                    {recipe.isUserMade ?
+                                        <div className="badge badge-secondary">User</div> :
+                                        <div className="badge badge-primary">Spoonacular</div>}
+                                </h2>
                                 <p>{recipe.ingredients}</p>
                                 <p>{recipe.equipment}</p>
                                 <p>{recipe.directions}</p>
                                 <p>{recipe.author}</p>
-                            </h2>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    </Link>
+                )) : (<h2>No recipe found, select another query</h2>)}
             </div>
         </>
     );
