@@ -24,11 +24,6 @@ function Dashnav({ handleLogout, user }) {
           </Link>
         </li>
         <li>
-          <Link to="/app/crud-recipe" className="navtext">
-            Create
-          </Link>
-        </li>
-        <li>
           <Link to="/app/recipes" className="navtext">
             Explore
           </Link>

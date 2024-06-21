@@ -57,7 +57,7 @@ const UserProfile = () => {
   const words = [
     { id: 0, value: "One day... I'm gonna make the onions cry." },
     { id: 1, value: "A recipe is a story that ends with a good meal." },
-    { id: 2, value: "The serect ingredient is always love." },
+    { id: 2, value: "The secret ingredient is always love." },
   ];
 
   useEffect(() => {
