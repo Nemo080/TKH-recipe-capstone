@@ -5,10 +5,8 @@ import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom';
 import Home from './components/Home.jsx'
 import Login from './components/Login.jsx'
 import Recipes from './components/Recipes.jsx';
-import Navbar from './components/Navbar';
 import Signup from './components/Signup';
 import Recipe from './components/Recipe';
-import Dashnav from './components/Dashnav.jsx';
 import CRUDRecipe from './components/CRUDRecipe';
 import Footer from './components/Footer';
 import UserProfile from './components/UserProfile';

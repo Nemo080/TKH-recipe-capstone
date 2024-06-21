@@ -1,12 +1,3 @@
-.recipe-card{
-    min-height: 25rem;
-    border-radius: 2rem;
-    overflow: hidden;
-}
-.recipe-image{
-    border-radius: 2rem;
-}
-
 body{
     font-family: "Montserrat", sans-serif;
     justify-content: center;
