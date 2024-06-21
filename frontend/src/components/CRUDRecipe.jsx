@@ -36,7 +36,10 @@ const RecipeForm = ({ mode, recipe, closeModal, refreshRecipes }) => {
       };
 
       console.log("Creating recipe with data:", formData); // Debug: Log form data
-      const response = await axios.post('http://localhost:3000/users/user-profile', formData);
+      const userToken = localStorage.getItem('userToken');
+      const response = await axios.post('http://localhost:3000/users/user-profile', formData, {
+        headers: { Authorization: `Bearer ${userToken}` }
+      });
       if (response.status === 201) {
         refreshRecipes();
         closeModal();
@@ -59,7 +62,10 @@ const RecipeForm = ({ mode, recipe, closeModal, refreshRecipes }) => {
 
       console.log("Updating recipe with ID:", id); // Debug: Log recipe ID
       console.log("Updating recipe with data:", formData); // Debug: Log form data
-      const response = await axios.put(`http://localhost:3000/users/user-profile/${id}`, formData);
+      const userToken = localStorage.getItem('userToken');
+      const response = await axios.put(`http://localhost:3000/users/user-profile/${id}`, formData, {
+        headers: { Authorization: `Bearer ${userToken}` }
+      });
       if (response.status === 200) {
         setMessage('Recipe updated successfully!');
         refreshRecipes();
@@ -75,7 +81,10 @@ const RecipeForm = ({ mode, recipe, closeModal, refreshRecipes }) => {
   const handleDelete = async () => {
     try {
       console.log("Deleting recipe with ID:", id); // Debug: Log recipe ID
-      const response = await axios.delete(`http://localhost:3000/users/user-profile/${id}`);
+      const userToken = localStorage.getItem('userToken');
+      const response = await axios.delete(`http://localhost:3000/users/user-profile/${id}`, {
+        headers: { Authorization: `Bearer ${userToken}` }
+      });
       if (response.status === 200) {
         setMessage('Recipe deleted successfully!');
         refreshRecipes();
