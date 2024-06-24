@@ -31,7 +31,7 @@ function Dashnav({ handleLogout, user }) {
         <details className="dropdown">
           <summary className="m-2 btn text-base nav-drop">
             
-            <img className="user-icon" src="/public/usericon.png" />
+            <img className="user-icon" src="/usericon.png" />
            {user ? user.name : ""}
           </summary>
           <ul className="p-2 shadow menu dropdown-content z-[1] rounded-box w-55 text-base font-medium navdrop-menu">

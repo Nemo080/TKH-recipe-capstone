@@ -13,7 +13,7 @@ function Home() {
             </div>
         </div>
         <div>
-        <img src="/public/froggy.gif" alt="gif of a cartoon frog stirring a pot"/>
+        <img src="/froggy.gif" alt="gif of a cartoon frog stirring a pot"/>
         </div>
       </div>
       
