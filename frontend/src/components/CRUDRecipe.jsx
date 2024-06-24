@@ -37,7 +37,7 @@ const RecipeForm = ({ mode, recipe, closeModal, refreshRecipes }) => {
 
       console.log("Creating recipe with data:", formData); // Debug: Log form data
       const userToken = localStorage.getItem('userToken');
-      const response = await axios.post('https://yummage.onrender.com/users/user-profile', formData, {
+      const response = await axios.post(`${import.meta.env.VITE_YUMMAGE_API}/users/user-profile`, formData, {
         headers: { Authorization: `Bearer ${userToken}` }
       });
       if (response.status === 201) {
@@ -63,7 +63,7 @@ const RecipeForm = ({ mode, recipe, closeModal, refreshRecipes }) => {
       console.log("Updating recipe with ID:", id); // Debug: Log recipe ID
       console.log("Updating recipe with data:", formData); // Debug: Log form data
       const userToken = localStorage.getItem('userToken');
-      const response = await axios.put(`https://yummage.onrender.com/users/user-profile/${id}`, formData, {
+      const response = await axios.put(`${import.meta.env.VITE_YUMMAGE_API}/users/user-profile/${id}`, formData, {
         headers: { Authorization: `Bearer ${userToken}` }
       });
       if (response.status === 200) {
@@ -82,7 +82,7 @@ const RecipeForm = ({ mode, recipe, closeModal, refreshRecipes }) => {
     try {
       console.log("Deleting recipe with ID:", id); // Debug: Log recipe ID
       const userToken = localStorage.getItem('userToken');
-      const response = await axios.delete(`https://yummage.onrender.com/users/user-profile/${id}`, {
+      const response = await axios.delete(`${import.meta.env.VITE_YUMMAGE_API}/users/user-profile/${id}`, {
         headers: { Authorization: `Bearer ${userToken}` }
       });
       if (response.status === 200) {

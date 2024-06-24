@@ -13,7 +13,7 @@ const Login = ( { handleLogin } ) => {
   // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("https://yummage.onrender.com/auth/login", { email, password })
+    axios.post(`${import.meta.env.VITE_YUMMAGE_API}/auth/login`, { email, password })
     .then((result) => {
 
     // storing the user's token in the local storage of the browser so they can stay logged in

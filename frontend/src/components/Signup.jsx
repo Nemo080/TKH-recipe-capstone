@@ -14,7 +14,7 @@ function Signup({ handleLogin }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://yummage.onrender.com/auth/signup", { name, email, password })
+      .post(`${import.meta.env.VITE_YUMMAGE_API}/auth/signup`, { name, email, password })
       .then((result) => {
         const userToken = "userToken";
         localStorage.setItem(userToken, result.data.token);

@@ -16,7 +16,7 @@ const UserProfile = () => {
         const userToken = localStorage.getItem("userToken");
         if (userToken) {
           const response = await axios.get(
-            "https://yummage.onrender.com/users/user-profile",
+            `${import.meta.env.VITE_YUMMAGE_API}/users/user-profile`,
             {
               headers: { Authorization: `Bearer ${userToken}` },
             }
@@ -42,7 +42,7 @@ const UserProfile = () => {
       const userToken = localStorage.getItem("userToken");
       if (userToken) {
         const response = await axios.get(
-          "https://yummage.onrender.com/users/user-profile",
+          `${import.meta.env.VITE_YUMMAGE_API}/users/user-profile`,
           {
             headers: { Authorization: `Bearer ${userToken}` },
           }
@@ -159,7 +159,7 @@ const UserProfile = () => {
               <h2 className="font-bold text-black my-8 text-2xl">
                 {user.name}
               </h2>
-              <p style={{ fontFamily: "Montserrat" }}>{user.pronouns}</p>
+              {/* <p style={{ fontFamily: "Montserrat" }}>{user.pronouns}</p> */}
               <button
                 onClick={() => handleModal("create")}
                 className="navsignup mb-4"
