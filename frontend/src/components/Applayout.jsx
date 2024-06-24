@@ -8,7 +8,7 @@ function AppLayout({handleLogout}) {
     useEffect (()=>{
         async function getUser () {
             const token= localStorage.getItem('userToken')
-            const response = await axios.get("http://localhost:3000/users/me", {
+            const response = await axios.get("https://yummage.onrender.com/users/me", {
                 headers:{
                     Authorization:`Bearer ${token}`
                 }

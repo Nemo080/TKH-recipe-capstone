@@ -17,7 +17,7 @@ function Recipes() {
 
   // function that retrieves recipes saved in the database
   const localRecipes = async () => {
-    const data = await fetch("http://localhost:3000/recipe/recipes");
+    const data = await fetch("https://yummage.onrender.com/recipe/recipes");
     const fetchedData = await data.json();
     console.log(fetchedData);
     return fetchedData.recipes.map((recipe) => {

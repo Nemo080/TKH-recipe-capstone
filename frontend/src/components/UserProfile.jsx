@@ -16,7 +16,7 @@ const UserProfile = () => {
         const userToken = localStorage.getItem("userToken");
         if (userToken) {
           const response = await axios.get(
-            "http://localhost:3000/users/user-profile",
+            "https://yummage.onrender.com/users/user-profile",
             {
               headers: { Authorization: `Bearer ${userToken}` },
             }
@@ -42,7 +42,7 @@ const UserProfile = () => {
       const userToken = localStorage.getItem("userToken");
       if (userToken) {
         const response = await axios.get(
-          "http://localhost:3000/users/user-profile",
+          "https://yummage.onrender.com/users/user-profile",
           {
             headers: { Authorization: `Bearer ${userToken}` },
           }
