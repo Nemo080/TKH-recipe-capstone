@@ -57,7 +57,7 @@ This project was built with the following major libraries:
   
 * [![React][React.js]][React-url]
   
-* [![Express][Express.js]][Express-url]
+* [![Express.js][Express.js]][Express-url]
 
 * [![DaisyUI][DaisyUI]][DaisyUI-url]
 
