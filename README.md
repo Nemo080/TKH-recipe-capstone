@@ -78,7 +78,7 @@ This project was built with the following major libraries:
 
 ## Getting Started
 
-Make sure you have Node, NPM, any IDE of your preference, and a clone of this repository saved locally. 
+Make sure you have Node, NPM, any Integrated Development Environment of your preference, and a clone of this repository saved locally. 
 
 ### Prerequisites
 
@@ -132,7 +132,7 @@ Yummage allows you to perform CRUD (Create, Read, Update, Delete) and save recip
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-
+Special thanks to:
 
 * Puja R. [Puja](https://github.com/pujaroy280)
 * Daniel C. [Daniel](https://github.com/DannyCastle1)
@@ -150,7 +150,7 @@ Yummage allows you to perform CRUD (Create, Read, Update, Delete) and save recip
 [React-url]: https://reactjs.org/
 [DaisyUI]: https://img.shields.io/badge/daisyui-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white
 [DaisyUI-url]: https://daisyui.com
-[Js]: https://img.shields.io/badge/logo-javascript-blue?logo=javascript
+[Js]: https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E
 [Js-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [Express.js]: https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB
 [Express-url]: https://expressjs.com
