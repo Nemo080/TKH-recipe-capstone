@@ -57,8 +57,6 @@ This project was built with the following major libraries:
   
 * [![React][React.js]][React-url]
   
-* [![Express.js][Express.js]][Express-url]
-
 * [![DaisyUI][DaisyUI]][DaisyUI-url]
 
 * [![NodeJS][NodeJS]][Node-url]
@@ -73,6 +71,7 @@ This project was built with the following major libraries:
 
 * [![Prisma][Prisma]][Prisma-url]
 
+* [![Express.js][Express.js]][Express-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
