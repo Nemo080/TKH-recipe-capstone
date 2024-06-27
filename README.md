@@ -148,8 +148,8 @@ Yummage allows you to perform CRUD (Create, Read, Update, Delete) and save recip
 [Css-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[DaisyUI]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
-[DaisyUI-url]: [https://getbootstrap.com](https://daisyui.com)
+[DaisyUI]: https://img.shields.io/badge/daisyui-5A0EF8?style=for-the-badge&logo=daisyui&logoColor=white
+[DaisyUI-url]: https://daisyui.com
 [Js]: https://img.shields.io/badge/logo-javascript-blue?logo=javascript
 [Js-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
 [Express.js]: https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB
