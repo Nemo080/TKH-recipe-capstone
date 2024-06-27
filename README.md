@@ -14,7 +14,6 @@
 <style>
   .logo {
     color: #FF7043;
-    font-family: "Quicksand", sans-serif;
     font-size: 3.5rem;
     font-weight: 600;
   }
