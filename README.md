@@ -11,9 +11,16 @@
 
 <!-- PROJECT LOGO -->
 <br />
-
+<style>
+  .logo{
+    color: #FF7043;
+    font-family: "Quicksand", sans-serif;
+    font-size: 3.5rem;
+    font-weight: 600;
+  }
+</style>
 <div align='center'>
-  <h3 align="center">Yummage</h3>
+  <h3 align="center" class='logo'>Yummage</h3>
  </div>
 
 <!-- TABLE OF CONTENTS -->
