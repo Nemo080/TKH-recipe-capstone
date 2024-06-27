@@ -144,7 +144,7 @@ Yummage allows you to perform CRUD (Create, Read, Update, Delete) and save recip
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[Css]: https://img.shields.io/badge/logo-css3-blue?logo=css3
+[Css]: https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white
 [Css-url]: https://developer.mozilla.org/en-US/docs/Web/CSS
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
