@@ -11,13 +11,7 @@
 
 <!-- PROJECT LOGO -->
 <br />
-<style>
-  .logo {
-    color: #FF7043;
-    font-size: 3.5rem;
-    font-weight: 600;
-  }
-</style>
+
 <div align='center'>
   <h3 align="center" class='logo'>Yummage</h3>
  </div>
