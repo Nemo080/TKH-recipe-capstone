@@ -12,7 +12,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <style>
-  .logo{
+  .logo {
     color: #FF7043;
     font-family: "Quicksand", sans-serif;
     font-size: 3.5rem;
