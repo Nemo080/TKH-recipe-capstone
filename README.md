@@ -12,10 +12,10 @@
 <!-- PROJECT LOGO -->
 <br />
 
-<div align='center'>
-  <img src="frontend/public/yummageLogo.png"/>
+<div align='center' >
+  <img src="frontend/public/yummageLogo.png" width="300px" padding="100px"/>
  </div>
-
+<br />
 <!-- TABLE OF CONTENTS -->
 <details>
   <summary>Table of Contents</summary>
