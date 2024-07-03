@@ -40,8 +40,8 @@ router.post("/signup", async (request, response) => {
         if (newUser) {
           const token = jwt.sign(
             {
-                email: foundUser.email,
-                id: foundUser.id,
+                email: newUser.email,
+                id: newUser.id,
             },
             process.env.SECRET_KEY
           );
